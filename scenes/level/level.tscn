@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://bkv14nkcp23if"]
+
+[ext_resource type="PackedScene" uid="uid://bl65ewnpqoymu" path="res://scenes/level/player/player.tscn" id="1_h3e3j"]
+[ext_resource type="Shader" uid="uid://ciigxeah5e0n1" path="res://resources/shaders/fisheye.gdshader" id="2_nbgty"]
+[ext_resource type="Shader" uid="uid://dwdr4diihway3" path="res://resources/shaders/tilt_shift.gdshader" id="3_i166f"]
+[ext_resource type="Shader" uid="uid://d22r4oixm1mci" path="res://resources/shaders/phatom.gdshader" id="4_qkmgm"]
+[ext_resource type="Shader" uid="uid://cdjw2ct4viaip" path="res://resources/shaders/vignette.gdshader" id="5_hnne4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h3e3j"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_nbgty"]
+sky_material = SubResource("ProceduralSkyMaterial_h3e3j")
+
+[sub_resource type="Environment" id="Environment_i166f"]
+background_mode = 2
+sky = SubResource("Sky_nbgty")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8y3pp"]
+size = Vector3(30, 0.2, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h3e3j"]
+size = Vector3(30, 0.2, 30)
+
+[sub_resource type="Gradient" id="Gradient_nbgty"]
+colors = PackedColorArray(0.1488, 0.24, 0.1488, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i166f"]
+frequency = 0.0347
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qkmgm"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_i166f")
+color_ramp = SubResource("Gradient_nbgty")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnne4"]
+albedo_texture = SubResource("NoiseTexture2D_qkmgm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i166f"]
+shader = ExtResource("2_nbgty")
+shader_parameter/effect_amount = 1.20000017575
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkmgm"]
+shader = ExtResource("3_i166f")
+shader_parameter/limit = 0.3710000176225
+shader_parameter/blur = 3.0000001425
+shader_parameter/intensity = 0.330000015675
+shader_parameter/debug = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnne4"]
+shader = ExtResource("4_qkmgm")
+shader_parameter/aberration_strength = 1.0000000475
+shader_parameter/blur_strength = 0.2000000095
+shader_parameter/noise_strength = 0.048
+shader_parameter/vignette_strength = 0.6000000285
+shader_parameter/scanline_strength = 0.016
+shader_parameter/distortion_strength = 0.1
+shader_parameter/ghost_strength = 0.030000001425
+shader_parameter/flicker_strength = 0.005
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vpf64"]
+shader = ExtResource("5_hnne4")
+shader_parameter/vignette_intensity = 0.6
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[node name="Level" type="Node3D" unique_id=638298329]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1309485557]
+transform = Transform3D(-0.35999683, -0.91188365, 0.1971562, 0, 0.21132478, 0.9774159, -0.93295354, 0.35186663, -0.07607625, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1036397847]
+environment = SubResource("Environment_i166f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1914837063]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=838147169]
+shape = SubResource("BoxShape3D_8y3pp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1471868259]
+mesh = SubResource("BoxMesh_h3e3j")
+surface_material_override/0 = SubResource("StandardMaterial3D_hnne4")
+
+[node name="Player" parent="." unique_id=1220500807 instance=ExtResource("1_h3e3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47581136, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1776566551]
+transform = Transform3D(1, 0, 0, 0, 0.6642264, 0.74753153, 0, -0.74753153, 0.6642264, 0, 9.157209, 8.142827)
+projection = 2
+current = true
+fov = 85.4
+size = 0.03
+
+[node name="EffectsLayer" type="CanvasLayer" parent="." unique_id=979753154]
+
+[node name="EffectsSubLayer1" type="Control" parent="EffectsLayer" unique_id=1215733900]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FisheyeEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=1468256234]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_i166f")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="EffectsLayer/EffectsSubLayer1" unique_id=1761337077]
+copy_mode = 2
+
+[node name="TiltShiftEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=722160498]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_qkmgm")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PhatomEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=2112250581]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_hnne4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VignetteEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=1012095986]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_vpf64")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
