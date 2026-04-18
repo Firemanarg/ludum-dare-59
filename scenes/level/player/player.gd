@@ -5,9 +5,7 @@ extends CharacterBody3D
 var friction: float = 40.0
 var acceleration: float = 6.0
 var max_ground_speed: float = 2.3
-#var max_ground_speed: float = 3.0
 var max_air_speed: float = 1.5
-var jump_velocity: float = 4.5
 
 
 @onready var character: Node3D = get_node("Character")
@@ -15,6 +13,10 @@ var jump_velocity: float = 4.5
 
 func _physics_process(_delta: float) -> void:
 	call_deferred(&"move_and_slide")
+
+
+func can_interact() -> bool:
+	return true
 
 
 func apply_gravity() -> void:

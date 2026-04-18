@@ -31,6 +31,7 @@ func _s_physics_update(delta: float) -> void:
 	var direction: Vector3 = player.get_input_direction()
 	if not direction:
 		transition.emit(self, "Idle")
+		return
 	player.velocity.x = lerp(
 		player.velocity.x,
 		direction.x * player.max_ground_speed,
@@ -42,6 +43,3 @@ func _s_physics_update(delta: float) -> void:
 		player.acceleration * delta
 	)
 	player.update_character_direction(direction)
-	var is_attacking: bool = Input.is_action_just_pressed(&"attack")
-	if is_attacking:
-		playback.travel(&"walking_attack_melee")

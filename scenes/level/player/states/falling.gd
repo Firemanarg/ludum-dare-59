@@ -3,8 +3,7 @@ extends State
 
 @onready var player: Player = get_parent().get_parent()
 @onready var playback: AnimationNodeStateMachinePlayback = (
-	player.get_node("AnimationTree").get("parameters/playback")
-)
+		player.get_node("AnimationTree").get("parameters/playback"))
 @onready var state_machine: StateMachine = player.get_node("StateMachine")
 
 
@@ -45,6 +44,3 @@ func _s_physics_update(delta: float) -> void:
 		player.acceleration * delta
 	)
 	player.update_character_direction(direction)
-	var is_attacking: bool = Input.is_action_just_pressed(&"attack")
-	if is_attacking:
-		playback.travel(&"idle_attack_melee")

@@ -17,7 +17,7 @@ func _s_enter() -> void:
 	if direction:
 		transition.emit(self, "Walking")
 		return
-	playback.travel(&"idle")
+	playback.travel(&"interact")
 
 
 func _s_exit() -> void:
@@ -35,8 +35,8 @@ func _s_physics_update(delta: float) -> void:
 		transition.emit(self, "Walking")
 		return
 	var is_interacting: bool = Input.is_action_pressed(&"interact")
-	if is_interacting and player.can_interact():
-		transition.emit(self, "Interacting")
+	if not is_interacting or not player.can_interact():
+		transition.emit(self, "Idle")
 		return
 	player.velocity.x = move_toward(player.velocity.x, 0, player.friction * delta)
 	player.velocity.z = move_toward(player.velocity.z, 0, player.friction * delta)

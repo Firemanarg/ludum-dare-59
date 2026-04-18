@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://drq4j3a2mvjx1" path="res://scenes/level/player/states/idle.gd" id="4_61pam"]
 [ext_resource type="Script" uid="uid://bfanf8bycql5c" path="res://scenes/level/player/states/walking.gd" id="5_sue2m"]
 [ext_resource type="Script" uid="uid://gh35derk8rcd" path="res://scenes/level/player/states/falling.gd" id="6_yvuy7"]
+[ext_resource type="Script" uid="uid://d1phktpj71qr3" path="res://scenes/level/player/states/interacting.gd" id="7_61pam"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7b6xn"]
 resource_name = "colormap"
@@ -2948,7 +2949,7 @@ states/interact/position = Vector2(447, 271)
 states/walking/node = SubResource("AnimationNodeBlendTree_xg7qc")
 states/walking/position = Vector2(489, -22)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_61pam"), "idle", "interact", SubResource("AnimationNodeStateMachineTransition_sue2m"), "interact", "idle", SubResource("AnimationNodeStateMachineTransition_3kqfe"), "idle", "falling", SubResource("AnimationNodeStateMachineTransition_eajbc"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_4x2hf"), "walking", "idle", SubResource("AnimationNodeStateMachineTransition_yvuy7"), "idle", "walking", SubResource("AnimationNodeStateMachineTransition_xg7qc"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_nk0bp"), "die", "End", SubResource("AnimationNodeStateMachineTransition_du4ox")]
-graph_offset = Vector2(-4, -81)
+graph_offset = Vector2(26, -46)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dacnv"]
 height = 0.65
@@ -2990,28 +2991,28 @@ bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4438228e-15, 0.17625, -0.02875)
 bones/3/enabled = true
 bones/3/position = Vector3(-1.4438228e-15, 0.17625, -0.02875)
-bones/3/rotation = Quaternion(0.008624068, 0, 0, 0.9999628)
+bones/3/rotation = Quaternion(-0.0325265, 0, 0, 0.99947095)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "arm-left"
 bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09989677, 0.1115, 0.0115)
 bones/4/enabled = true
 bones/4/position = Vector3(0.09989677, 0.1115, 0.0115)
-bones/4/rotation = Quaternion(0, 0, -0.35865492, 0.93347025)
+bones/4/rotation = Quaternion(0, 0, -0.29083785, 0.95677245)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "arm-right"
 bones/5/parent = 3
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09989677, 0.1115, 0.0115)
 bones/5/enabled = true
 bones/5/position = Vector3(-0.09989677, 0.1115, 0.0115)
-bones/5/rotation = Quaternion(0, 0, 0.35865492, 0.93347025)
+bones/5/rotation = Quaternion(0, 0, 0.29083785, 0.95677245)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "head"
 bones/6/parent = 3
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8196893e-09, 0.167, 0.026388777)
 bones/6/enabled = true
 bones/6/position = Vector3(1.8196893e-09, 0.167, 0.026388777)
-bones/6/rotation = Quaternion(0, -0.008624068, 0, 0.9999628)
+bones/6/rotation = Quaternion(0, 0.0325265, 0, 0.99947095)
 bones/6/scale = Vector3(1, 1, 1)
 
 [node name="body-mesh" type="MeshInstance3D" parent="Character/character-female-b2/character-female-b/Skeleton3D" unique_id=84630323]
@@ -3025,7 +3026,7 @@ skin = SubResource("Skin_5iooc")
 skeleton = NodePath("..")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Character/character-female-b2/character-female-b/Skeleton3D" unique_id=116099417]
-transform = Transform3D(1, 0, 0, 0, 0.9998512, -0.017247496, 0, 0.017247496, 0.9998512, -1.4438228e-15, 0.17625, -0.02875)
+transform = Transform3D(1, 0, 0, 0, 0.99788404, 0.06501858, 0, -0.06501858, 0.99788404, -1.4438228e-15, 0.17625, -0.02875)
 bone_name = "torso"
 bone_idx = 3
 
@@ -3063,3 +3064,6 @@ script = ExtResource("5_sue2m")
 
 [node name="Falling" type="Node" parent="StateMachine" unique_id=1012814892]
 script = ExtResource("6_yvuy7")
+
+[node name="Interacting" type="Node" parent="StateMachine" unique_id=1910519634]
+script = ExtResource("7_61pam")
