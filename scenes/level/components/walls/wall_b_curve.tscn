@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bdp14p427mgxx"]
+
+[ext_resource type="PackedScene" uid="uid://dhoh1rk305uuk" path="res://resources/prefabs/walls/wall_b_curve_prefab.tscn" id="1_dnb4r"]
+
+[node name="CurveWallB" unique_id=1373688029 instance=ExtResource("1_dnb4r")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=499024773]
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="StaticBody3D" index="0" unique_id=2144148976]
+transform = Transform3D(-4.371139e-08, 1, 1.3113416e-07, 0, 1.3113416e-07, -1, -1, -4.371139e-08, -5.732056e-15, 0.14619887, 0.4, -0.44408417)
+depth = 0.8
+polygon = PackedVector2Array(-1.0397918, -0.0476825, -0.6145702, -0.16244134, -0.36108458, -0.4478405, -0.24337983, -0.85023284, -0.031081349, -0.8458163, -0.17077792, -0.3329486, -0.55021405, 0.050671503, -1.0378965, 0.17366709)

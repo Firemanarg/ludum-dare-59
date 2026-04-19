@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dgdf57m2yi6ka"]
+
+[ext_resource type="PackedScene" uid="uid://c0p0swgf1uami" path="res://resources/prefabs/walls/wall_b_damaged_prefab.tscn" id="1_l21jn"]
+
+[node name="WallBDamaged" unique_id=1373688029 instance=ExtResource("1_l21jn")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=2140252710]
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="StaticBody3D" index="0" unique_id=33588538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.4, 0)
+depth = 0.2
+polygon = PackedVector2Array(-1.1065501, 0.39542583, -1.1133871, 0.7130717, -0.52744746, 0.96812296, -0.5112643, 1.1339259, -0.09191269, 1.1443189, -0.059278965, 0.38858882)

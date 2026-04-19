@@ -66,18 +66,22 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_pp0fd")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vvqcr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_viv2k"]
+albedo_color = Color(1.3991334, 0.97460926, 0.6272712, 1)
 albedo_texture = ExtResource("2_43m4n")
+metallic_specular = 0.0
 normal_enabled = true
-normal_scale = 16.0
+normal_scale = 4.0
 normal_texture = ExtResource("3_hk6ry")
 uv1_scale = Vector3(0.3, 0.3, 0.3)
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43m4n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrqa7"]
+albedo_color = Color(1.3991334, 0.97460926, 0.6272712, 1)
 albedo_texture = ExtResource("2_43m4n")
+metallic_specular = 0.0
 normal_enabled = true
-normal_scale = 16.0
+normal_scale = 4.0
 normal_texture = ExtResource("3_hk6ry")
 uv1_scale = Vector3(0.3, 0.3, 0.3)
 uv1_triplanar = true
@@ -88,5 +92,5 @@ uv1_triplanar = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 layers = 2
 mesh = SubResource("ArrayMesh_j44o8")
-surface_material_override/0 = SubResource("StandardMaterial3D_vvqcr")
-surface_material_override/1 = SubResource("StandardMaterial3D_43m4n")
+surface_material_override/0 = SubResource("StandardMaterial3D_viv2k")
+surface_material_override/1 = SubResource("StandardMaterial3D_qrqa7")

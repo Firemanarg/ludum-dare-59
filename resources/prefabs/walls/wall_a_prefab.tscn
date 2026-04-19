@@ -43,9 +43,11 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_m4xkr")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_621rh"]
+albedo_color = Color(1.3991334, 0.97460926, 0.6272712, 1)
 albedo_texture = ExtResource("2_tw1wt")
+metallic_specular = 0.0
 normal_enabled = true
-normal_scale = 16.0
+normal_scale = 4.0
 normal_texture = ExtResource("3_kikbx")
 uv1_scale = Vector3(0.3, 0.3, 0.3)
 uv1_triplanar = true

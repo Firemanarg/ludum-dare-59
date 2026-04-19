@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c1hca4qm4l34y"]
+
+[ext_resource type="PackedScene" uid="uid://b3rvtp56l060a" path="res://resources/prefabs/props/rocks_c_prefab.tscn" id="1_2hqls"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ug6ro"]
+size = Vector3(1.8000001, 1.2, 1.7)
+
+[node name="RocksC" unique_id=1016423732 instance=ExtResource("1_2hqls")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=191727024]
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1000578677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_ug6ro")

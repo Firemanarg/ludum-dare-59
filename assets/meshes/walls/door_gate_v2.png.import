@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0dm54foymcqy"
-path.s3tc="res://.godot/imported/Metal8_Normal.png-fe9d7c3620b89e3b709ef89e193abdb3.s3tc.ctex"
+uid="uid://c1c7j8tsd4sr3"
+path.s3tc="res://.godot/imported/door_gate_v2.png-82967d33f6ba44bcec15857278d2a049.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "6322f35177fe9d92d62befb703a673c0"
+}
 
 [deps]
 
-source_file="res://assets/meshes/walls/textures/metal/Metal8_Normal.png"
-dest_files=["res://.godot/imported/Metal8_Normal.png-fe9d7c3620b89e3b709ef89e193abdb3.s3tc.ctex"]
+source_file="res://assets/meshes/walls/door_gate_v2.png"
+dest_files=["res://.godot/imported/door_gate_v2.png-82967d33f6ba44bcec15857278d2a049.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://assets/meshes/walls/textures/metal/Metal8_Normal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

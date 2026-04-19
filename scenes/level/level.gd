@@ -1,5 +1,6 @@
 extends Node3D
 
+# ------------------------------------------------------------------------------
 
 const PLAYER_UNPROJECTED_OFFSET: Vector2 = Vector2(0.0, -20.0)
 
@@ -8,6 +9,7 @@ const PLAYER_UNPROJECTED_OFFSET: Vector2 = Vector2(0.0, -20.0)
 @onready var player: Player = get_node("%Player")
 @onready var camera_3d_walls: Camera3D = get_node("%Camera3DWalls")
 
+# ------------------------------------------------------------------------------
 
 func _ready() -> void:
 	pass
@@ -20,6 +22,7 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	_update_transparent_wall_effect_target()
 
+# ------------------------------------------------------------------------------
 
 func _update_transparent_wall_effect_target() -> void:
 	if not player or not transparent_wall_effect or not camera_3d_walls:

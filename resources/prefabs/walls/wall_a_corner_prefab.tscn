@@ -44,17 +44,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_u40d7")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25te1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdj3m"]
+albedo_color = Color(1.3991334, 0.97460926, 0.6272712, 1)
 albedo_texture = ExtResource("2_i6bpq")
+metallic_specular = 0.0
 normal_enabled = true
-normal_scale = 16.0
+normal_scale = 4.0
 normal_texture = ExtResource("3_lx73b")
 uv1_scale = Vector3(0.3, 0.3, 0.3)
 uv1_triplanar = true
 
-[node name="WallCornerAPrefab" type="Node3D" unique_id=1960629011]
+[node name="WallACornerPrefab" type="Node3D" unique_id=1960629011]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=851223122]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 mesh = SubResource("ArrayMesh_g78ok")
-surface_material_override/0 = SubResource("StandardMaterial3D_25te1")
+surface_material_override/0 = SubResource("StandardMaterial3D_qdj3m")

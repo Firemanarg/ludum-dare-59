@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://drmqf7fuvgtil"]
+
+[ext_resource type="PackedScene" uid="uid://4f6vcc0l6704" path="res://resources/prefabs/props/crypt_a_prefab.tscn" id="1_d75nm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_015em"]
+size = Vector3(1.7, 1, 1)
+
+[node name="CryptA" unique_id=1373688029 instance=ExtResource("1_d75nm")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=932479644]
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1979834141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_015em")
