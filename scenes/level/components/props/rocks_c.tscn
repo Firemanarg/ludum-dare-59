@@ -2,15 +2,44 @@
 
 [ext_resource type="PackedScene" uid="uid://b3rvtp56l060a" path="res://resources/prefabs/props/rocks_c_prefab.tscn" id="1_2hqls"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ug6ro"]
-size = Vector3(1.8000001, 1.2, 1.7)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2hqls"]
+height = 1.3
+radius = 0.6
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ug6ro"]
+height = 1.3
+radius = 0.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mjsi8"]
+height = 1.3
+radius = 0.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tlqc7"]
+height = 1.3
+radius = 0.2
 
 [node name="RocksC" unique_id=1016423732 instance=ExtResource("1_2hqls")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=191727024]
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1583675135]
 collision_layer = 2
 collision_mask = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1000578677]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_ug6ro")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=114802627]
+transform = Transform3D(0.9992875, 0, 0.037742507, 0, 1, 0, -0.037742507, 0, 0.9992875, 0.35, 0.65, -0.263)
+shape = SubResource("CylinderShape3D_2hqls")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=1317988679]
+transform = Transform3D(0.9992875, 0, 0.037742507, 0, 1, 0, -0.037742507, 0, 0.9992875, -0.55, 0.65, -0.46300003)
+shape = SubResource("CylinderShape3D_ug6ro")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2" unique_id=1076002146]
+transform = Transform3D(0.9992875, 0, 0.037742507, 0, 1, 0, -0.037742507, 0, 0.9992875, -0.35000002, 0.65, 0.137)
+shape = SubResource("CylinderShape3D_mjsi8")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" index="3" unique_id=2065896535]
+transform = Transform3D(0.9992875, 0, 0.037742507, 0, 1, 0, -0.037742507, 0, 0.9992875, 0.14999998, 0.65, 0.437)
+shape = SubResource("CylinderShape3D_mjsi8")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" index="4" unique_id=53428446]
+transform = Transform3D(0.9992875, 0, 0.037742507, 0, 1, 0, -0.037742507, 0, 0.9992875, -0.75000006, 0.65, 0.38471845)
+shape = SubResource("CylinderShape3D_tlqc7")

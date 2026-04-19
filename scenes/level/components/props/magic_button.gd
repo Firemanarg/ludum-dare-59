@@ -2,6 +2,10 @@ extends Node3D
 
 # ------------------------------------------------------------------------------
 
+signal player_entered
+
+# ------------------------------------------------------------------------------
+
 var was_pressed: bool = false
 
 @onready var unpressed_button: MeshInstance3D = get_node("%UnpressedButton")
@@ -34,3 +38,10 @@ func _on_pressed() -> void:
 	was_pressed = true
 	unpressed_button.set_visible(false)
 	pressed_button.set_visible(true)
+
+# ------------------------------------------------------------------------------
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if not body.get_parent() is Player:
+		return
+	player_entered.emit()
