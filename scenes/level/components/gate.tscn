@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://kdrtapsof3xo"]
+
+[ext_resource type="PackedScene" uid="uid://dupidnxwn3hb8" path="res://resources/prefabs/walls/gate_prefab.tscn" id="1_2pqvg"]
+[ext_resource type="PackedScene" uid="uid://dyh65rdpuwbji" path="res://resources/prefabs/walls/door_prefab.tscn" id="2_h2h76"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2h76"]
+size = Vector3(3, 1.4, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k2djt"]
+size = Vector3(3, 1.4, 0.6)
+
+[node name="Gate" type="Node3D" unique_id=661346740]
+
+[node name="Gate" parent="." unique_id=1960629011 instance=ExtResource("1_2pqvg")]
+
+[node name="Door" parent="." unique_id=813150143 instance=ExtResource("2_h2h76")]
+
+[node name="EnvironmentCollisions" type="StaticBody3D" parent="." unique_id=195335271]
+collision_layer = 2
+collision_mask = 11
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnvironmentCollisions" unique_id=10546129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+shape = SubResource("BoxShape3D_h2h76")
+
+[node name="PermanentGateCollisions" type="StaticBody3D" parent="." unique_id=266112952]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PermanentGateCollisions" unique_id=1677030974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+shape = SubResource("BoxShape3D_k2djt")
