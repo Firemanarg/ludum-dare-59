@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dwucyhhg3exwv"]
+
+[ext_resource type="PackedScene" uid="uid://brxjanjenimnh" path="res://scenes/level/room.tscn" id="1_hjjt7"]
+[ext_resource type="PackedScene" uid="uid://c5r3ov4pga3ky" path="res://scenes/level/components/walls/wall_b.tscn" id="2_3n8o0"]
+[ext_resource type="PackedScene" uid="uid://ddf21af5dqglb" path="res://scenes/level/components/walls/wall_b_column.tscn" id="3_ej3il"]
+[ext_resource type="PackedScene" uid="uid://bdp14p427mgxx" path="res://scenes/level/components/walls/wall_b_curve.tscn" id="4_fm1l4"]
+[ext_resource type="PackedScene" uid="uid://dgdf57m2yi6ka" path="res://scenes/level/components/walls/wall_b_damaged.tscn" id="5_ktjw2"]
+[ext_resource type="PackedScene" uid="uid://bbo7gpco30cf1" path="res://scenes/level/components/props/altar_a.tscn" id="6_5t4we"]
+[ext_resource type="PackedScene" uid="uid://feteavl2nsre" path="res://scenes/level/components/props/altar_b.tscn" id="7_2oehl"]
+[ext_resource type="PackedScene" uid="uid://bjo1cj01nt7jm" path="res://scenes/level/components/props/column.tscn" id="8_b3f7p"]
+[ext_resource type="PackedScene" uid="uid://drmqf7fuvgtil" path="res://scenes/level/components/props/crypt_a.tscn" id="9_7wsbr"]
+[ext_resource type="PackedScene" uid="uid://vjpeyxjxd0g3" path="res://scenes/level/components/props/crypt_b.tscn" id="10_5yaga"]
+[ext_resource type="PackedScene" uid="uid://gkx83wly8gmm" path="res://scenes/level/components/props/crypt_c.tscn" id="11_57bvm"]
+[ext_resource type="PackedScene" uid="uid://bgb06o81qae7g" path="res://scenes/level/components/props/gravestone_broken.tscn" id="12_ds024"]
+[ext_resource type="PackedScene" uid="uid://c8vyy3okos3iw" path="res://scenes/level/components/props/gravestone_wide.tscn" id="13_ifthp"]
+[ext_resource type="PackedScene" uid="uid://ccecmxme1vjmb" path="res://scenes/level/components/props/magic_button.tscn" id="14_oh6w0"]
+[ext_resource type="PackedScene" uid="uid://gbnjp8t46h14" path="res://scenes/level/components/props/peeble.tscn" id="15_wreyy"]
+[ext_resource type="PackedScene" uid="uid://und811tdgbjn" path="res://scenes/level/components/props/rocks_a.tscn" id="16_tog6x"]
+[ext_resource type="PackedScene" uid="uid://boy0hrf3k3qnx" path="res://scenes/level/components/props/rocks_b.tscn" id="17_8y5n4"]
+[ext_resource type="PackedScene" uid="uid://c1hca4qm4l34y" path="res://scenes/level/components/props/rocks_c.tscn" id="18_n0ltc"]
+
+[node name="TestRoom" unique_id=530671447 instance=ExtResource("1_hjjt7")]
+
+[node name="OtherComponents" type="Node3D" parent="." index="1" unique_id=620545732]
+
+[node name="WallB" parent="OtherComponents" index="0" unique_id=1373688029 instance=ExtResource("2_3n8o0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4801264, -4.7683716e-07, 4.9088125)
+
+[node name="ColumnWallB" parent="OtherComponents" index="1" unique_id=1416994224 instance=ExtResource("3_ej3il")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0109215, -4.7683716e-07, 5.078112)
+
+[node name="CurveWallB" parent="OtherComponents" index="2" unique_id=2110307441 instance=ExtResource("4_fm1l4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.627118, -4.7683716e-07, 2.6860394)
+
+[node name="WallBDamaged" parent="OtherComponents" index="3" unique_id=699973760 instance=ExtResource("5_ktjw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8138328, -7.450581e-09, 3.424817)
+
+[node name="AltarA" parent="OtherComponents" index="4" unique_id=1166202614 instance=ExtResource("6_5t4we")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3413067, 0, -0.46135175)
+
+[node name="AltarB" parent="OtherComponents" index="5" unique_id=331927531 instance=ExtResource("7_2oehl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37211, 0, -2.7886999)
+
+[node name="Column" parent="OtherComponents" index="6" unique_id=599997894 instance=ExtResource("8_b3f7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6595383, -4.7683716e-07, -4.493257)
+
+[node name="CryptA" parent="OtherComponents" index="7" unique_id=2025620594 instance=ExtResource("9_7wsbr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3173878, -4.7683716e-07, -5.031871)
+
+[node name="CryptB" parent="OtherComponents" index="8" unique_id=516479919 instance=ExtResource("10_5yaga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2886992, -9.536743e-07, -3.2357173)
+
+[node name="CryptC" parent="OtherComponents" index="9" unique_id=1784607506 instance=ExtResource("11_57bvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.84053993, 0, -0.70097923)
+
+[node name="GravestoneBroken" parent="OtherComponents" index="10" unique_id=1128215472 instance=ExtResource("12_ds024")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9582639, -4.7683716e-07, -2.2455106)
+
+[node name="GravestoneWide" parent="OtherComponents" index="11" unique_id=908497630 instance=ExtResource("13_ifthp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.149903, -4.7683716e-07, -3.612539)
+
+[node name="MagicButton" parent="OtherComponents" index="12" unique_id=303220282 instance=ExtResource("14_oh6w0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.095924, -4.7683716e-07, -1.1930952)
+
+[node name="Peeble" parent="OtherComponents" index="13" unique_id=1016423732 instance=ExtResource("15_wreyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.459661, 4.7019774e-38, -0.7959528)
+
+[node name="RocksA" parent="OtherComponents" index="14" unique_id=1759406122 instance=ExtResource("16_tog6x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.580108, 6.767919e-16, 2.272443)
+
+[node name="RocksB" parent="OtherComponents" index="15" unique_id=694844261 instance=ExtResource("17_8y5n4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4725494, 0, -4.723692)
+
+[node name="RocksC" parent="OtherComponents" index="16" unique_id=1448557464 instance=ExtResource("18_n0ltc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.98808503, 0, 3.940805)
