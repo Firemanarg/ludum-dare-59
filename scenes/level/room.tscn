@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://brxjanjenimnh"]
 
+[ext_resource type="Script" uid="uid://ct1d51wl7x6ss" path="res://scenes/level/room.gd" id="1_e4yy5"]
 [ext_resource type="PackedScene" uid="uid://dqs51x6eepsvg" path="res://resources/prefabs/walls/wall_a_prefab.tscn" id="2_v2gnk"]
 [ext_resource type="PackedScene" uid="uid://kdrtapsof3xo" path="res://scenes/level/components/default/gate.tscn" id="3_e4yy5"]
 [ext_resource type="PackedScene" uid="uid://c2m5fqoel72bk" path="res://resources/prefabs/walls/wall_a_corner_prefab.tscn" id="3_ojate"]
@@ -54,6 +55,7 @@ normal_texture = SubResource("NoiseTexture2D_7swvj")
 size = Vector3(16, 0.2, 16)
 
 [node name="Room" type="Node3D" unique_id=530671447]
+script = ExtResource("1_e4yy5")
 
 [node name="DefaultComponents" type="Node3D" parent="." unique_id=1082952520]
 
