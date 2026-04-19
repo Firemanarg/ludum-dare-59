@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://bkv14nkcp23if"]
 
 [ext_resource type="PackedScene" uid="uid://bl65ewnpqoymu" path="res://scenes/level/player/player.tscn" id="1_h3e3j"]
-[ext_resource type="PackedScene" uid="uid://brxjanjenimnh" path="res://scenes/level/room.tscn" id="1_vpf64"]
 [ext_resource type="Script" uid="uid://ddy18cs34fict" path="res://scenes/level/level.gd" id="1_xv074"]
 [ext_resource type="Shader" uid="uid://ciigxeah5e0n1" path="res://resources/shaders/fisheye.gdshader" id="2_nbgty"]
 [ext_resource type="Shader" uid="uid://dwdr4diihway3" path="res://resources/shaders/tilt_shift.gdshader" id="3_i166f"]
-[ext_resource type="PackedScene" uid="uid://ccecmxme1vjmb" path="res://scenes/level/components/props/magic_button.tscn" id="3_tf2q7"]
 [ext_resource type="Shader" uid="uid://d22r4oixm1mci" path="res://resources/shaders/phatom.gdshader" id="4_qkmgm"]
 [ext_resource type="Shader" uid="uid://cdjw2ct4viaip" path="res://resources/shaders/vignette.gdshader" id="5_hnne4"]
 [ext_resource type="Shader" uid="uid://br7e08vmvhnbm" path="res://resources/shaders/transparent_wall.gdshader" id="7_wcngd"]
@@ -83,11 +81,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1036397847]
 environment = SubResource("Environment_i166f")
-
-[node name="Room" parent="." unique_id=530671447 instance=ExtResource("1_vpf64")]
-
-[node name="MagicButton" parent="." unique_id=303220282 instance=ExtResource("3_tf2q7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0982175, 0, -0.14672041)
 
 [node name="Player" parent="." unique_id=1220500807 instance=ExtResource("1_h3e3j")]
 unique_name_in_owner = true
