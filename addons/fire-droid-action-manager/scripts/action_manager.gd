@@ -187,9 +187,15 @@ func _setup() -> void:
 				+ "Setting it to 'true'.",
 				FDLog.LogLevel.WARNING)
 		enable_override_actions = true
-	_default_actions = load(default_action_list).new()
+	if default_action_list:
+		_default_actions = load(default_action_list).new()
+	else:
+		_default_actions = null
 	_enable_default_actions = enable_default_actions
-	_override_actions = load(override_action_list).new()
+	if override_action_list:
+		_override_actions = load(override_action_list).new()
+	else:
+		_override_actions = null
 	_enable_override_actions = enable_override_actions
 
 # ------------------------------------------------------------------------------
