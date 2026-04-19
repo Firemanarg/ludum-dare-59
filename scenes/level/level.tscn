@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://bkv14nkcp23if"]
 
 [ext_resource type="PackedScene" uid="uid://bl65ewnpqoymu" path="res://scenes/level/player/player.tscn" id="1_h3e3j"]
+[ext_resource type="PackedScene" uid="uid://brxjanjenimnh" path="res://scenes/level/room.tscn" id="1_vpf64"]
+[ext_resource type="Script" uid="uid://ddy18cs34fict" path="res://scenes/level/level.gd" id="1_xv074"]
 [ext_resource type="Shader" uid="uid://ciigxeah5e0n1" path="res://resources/shaders/fisheye.gdshader" id="2_nbgty"]
 [ext_resource type="Shader" uid="uid://dwdr4diihway3" path="res://resources/shaders/tilt_shift.gdshader" id="3_i166f"]
+[ext_resource type="PackedScene" uid="uid://ccecmxme1vjmb" path="res://scenes/level/components/props/magic_button.tscn" id="3_tf2q7"]
 [ext_resource type="Shader" uid="uid://d22r4oixm1mci" path="res://resources/shaders/phatom.gdshader" id="4_qkmgm"]
 [ext_resource type="Shader" uid="uid://cdjw2ct4viaip" path="res://resources/shaders/vignette.gdshader" id="5_hnne4"]
+[ext_resource type="Shader" uid="uid://br7e08vmvhnbm" path="res://resources/shaders/transparent_wall.gdshader" id="7_wcngd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h3e3j"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -18,31 +22,27 @@ background_mode = 2
 sky = SubResource("Sky_nbgty")
 tonemap_mode = 2
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8y3pp"]
-size = Vector3(30, 0.2, 30)
-
-[sub_resource type="BoxMesh" id="BoxMesh_h3e3j"]
-size = Vector3(30, 0.2, 30)
-
-[sub_resource type="Gradient" id="Gradient_nbgty"]
-colors = PackedColorArray(0.1488, 0.24, 0.1488, 1, 0, 0, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_i166f"]
-frequency = 0.0347
-fractal_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qkmgm"]
-width = 1024
-height = 1024
-noise = SubResource("FastNoiseLite_i166f")
-color_ramp = SubResource("Gradient_nbgty")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnne4"]
-albedo_texture = SubResource("NoiseTexture2D_qkmgm")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i166f"]
 shader = ExtResource("2_nbgty")
 shader_parameter/effect_amount = 1.20000017575
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wcngd"]
+viewport_path = NodePath("EffectsLayer/ViewportTextures/SubViewportWalls")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xv074"]
+viewport_path = NodePath("EffectsLayer/ViewportTextures/SubViewportNoWalls")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xv074"]
+resource_local_to_scene = true
+shader = ExtResource("7_wcngd")
+shader_parameter/Cam1_texture = SubResource("ViewportTexture_wcngd")
+shader_parameter/Cam2_texture = SubResource("ViewportTexture_xv074")
+shader_parameter/Target_Pos_PX = Vector2(950, 500)
+shader_parameter/Radius = 100.0
+shader_parameter/Edge_Smooth = 120.0000057
+shader_parameter/Texture_Size = Vector2(1920, 1080)
+shader_parameter/Pixelize_Edge = 0.0
+shader_parameter/Pixel_Size_PX = 23.791
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qkmgm"]
 shader = ExtResource("3_i166f")
@@ -68,7 +68,14 @@ shader_parameter/vignette_intensity = 0.6
 shader_parameter/vignette_opacity = 0.5
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sytrn"]
+shader = ExtResource("5_hnne4")
+shader_parameter/vignette_intensity = 2.54
+shader_parameter/vignette_opacity = 1.0
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
 [node name="Level" type="Node3D" unique_id=638298329]
+script = ExtResource("1_xv074")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1309485557]
 transform = Transform3D(-0.35999683, -0.91188365, 0.1971562, 0, 0.21132478, 0.9774159, -0.93295354, 0.35186663, -0.07607625, 0, 0, 0)
@@ -77,26 +84,70 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1036397847]
 environment = SubResource("Environment_i166f")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1914837063]
+[node name="Room" parent="." unique_id=530671447 instance=ExtResource("1_vpf64")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=838147169]
-shape = SubResource("BoxShape3D_8y3pp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1471868259]
-mesh = SubResource("BoxMesh_h3e3j")
-surface_material_override/0 = SubResource("StandardMaterial3D_hnne4")
+[node name="MagicButton" parent="." unique_id=303220282 instance=ExtResource("3_tf2q7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0982175, 0, -0.14672041)
 
 [node name="Player" parent="." unique_id=1220500807 instance=ExtResource("1_h3e3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47581136, 0)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47581005, -9.536743e-07)
 
-[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1776566551]
-transform = Transform3D(1, 0, 0, 0, 0.6642264, 0.74753153, 0, -0.74753153, 0.6642264, 0, 9.157209, 8.142827)
+[node name="RemoteTransform3DNoWalls" type="RemoteTransform3D" parent="Player" unique_id=1524020880]
+remote_path = NodePath("../../EffectsLayer/ViewportTextures/SubViewportNoWalls/PivotCamera3DNoWalls")
+update_rotation = false
+update_scale = false
+
+[node name="RemoteTransform3DWalls" type="RemoteTransform3D" parent="Player" unique_id=1261971389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.536743e-07, 9.536743e-07)
+remote_path = NodePath("../../EffectsLayer/ViewportTextures/SubViewportWalls/PivotCamera3DWalls")
+update_rotation = false
+update_scale = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player" unique_id=72694022]
+light_color = Color(1, 0.81554437, 0.6039661, 1)
+light_energy = 3.787
+
+[node name="EffectsLayer" type="CanvasLayer" parent="." unique_id=979753154]
+
+[node name="ViewportTextures" type="Control" parent="EffectsLayer" unique_id=628720985]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportNoWalls" type="SubViewport" parent="EffectsLayer/ViewportTextures" unique_id=643823339]
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="PivotCamera3DNoWalls" type="Node3D" parent="EffectsLayer/ViewportTextures/SubViewportNoWalls" unique_id=1914502498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47581005, -9.536743e-07)
+
+[node name="Camera3DNoWalls" type="Camera3D" parent="EffectsLayer/ViewportTextures/SubViewportNoWalls/PivotCamera3DNoWalls" unique_id=1515886755]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.6642264, 0.74753153, 0, -0.74753153, 0.6642264, 0, 9.15721, 8.142828)
+cull_mask = 1048573
 projection = 2
 current = true
 fov = 85.4
 size = 0.03
 
-[node name="EffectsLayer" type="CanvasLayer" parent="." unique_id=979753154]
+[node name="SubViewportWalls" type="SubViewport" parent="EffectsLayer/ViewportTextures" unique_id=2041891719]
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="PivotCamera3DWalls" type="Node3D" parent="EffectsLayer/ViewportTextures/SubViewportWalls" unique_id=1709786737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.475811, 0)
+
+[node name="Camera3DWalls" type="Camera3D" parent="EffectsLayer/ViewportTextures/SubViewportWalls/PivotCamera3DWalls" unique_id=1776566551]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.6642264, 0.74753153, 0, -0.74753153, 0.6642264, 0, 9.15721, 8.142828)
+cull_mask = 4294967295
+projection = 2
+fov = 85.4
+size = 0.03
 
 [node name="EffectsSubLayer1" type="Control" parent="EffectsLayer" unique_id=1215733900]
 layout_mode = 3
@@ -109,6 +160,16 @@ grow_vertical = 2
 [node name="FisheyeEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=1468256234]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_i166f")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TransparentWallEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=884533962]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_xv074")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,7 +202,18 @@ grow_vertical = 2
 
 [node name="VignetteEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=1012095986]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_vpf64")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VignetteEffect2" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=2024781247]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_sytrn")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c5r3ov4pga3ky"]
+
+[ext_resource type="PackedScene" uid="uid://b6itbc8v1273f" path="res://resources/prefabs/walls/wall_b_prefab.tscn" id="1_i6s7k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qivab"]
+size = Vector3(1, 0.8, 0.3)
+
+[node name="WallB" unique_id=1373688029 instance=ExtResource("1_i6s7k")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1528105994]
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=423003610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_qivab")

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://gbnjp8t46h14"]
+
+[ext_resource type="PackedScene" uid="uid://c7bcgdbd3c18w" path="res://resources/prefabs/props/peeble_prefab.tscn" id="1_4hygb"]
+
+[node name="Peeble" unique_id=1016423732 instance=ExtResource("1_4hygb")]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c1vrrp4c8j10y" path="res://scenes/level/player/player.gd" id="1_3ufoc"]
 [ext_resource type="Texture2D" uid="uid://b3u3dbufwa8ia" path="res://assets/meshes/player_character/textures/colormap.png" id="1_dacnv"]
 [ext_resource type="Script" uid="uid://cjbwf50bfmdxc" path="res://scenes/state_machine/state_machine.gd" id="3_eajbc"]
+[ext_resource type="PackedScene" uid="uid://c6224sd1ipp11" path="res://resources/prefabs/props/torch_prefab.tscn" id="3_sue2m"]
 [ext_resource type="Script" uid="uid://drq4j3a2mvjx1" path="res://scenes/level/player/states/idle.gd" id="4_61pam"]
 [ext_resource type="Script" uid="uid://bfanf8bycql5c" path="res://scenes/level/player/states/walking.gd" id="5_sue2m"]
 [ext_resource type="Script" uid="uid://gh35derk8rcd" path="res://scenes/level/player/states/falling.gd" id="6_yvuy7"]
@@ -2956,6 +2957,7 @@ height = 0.65
 radius = 0.2
 
 [node name="Player" type="CharacterBody3D" unique_id=1220500807]
+collision_mask = 10
 script = ExtResource("1_3ufoc")
 
 [node name="Character" type="Node3D" parent="." unique_id=197800250]
@@ -2991,28 +2993,28 @@ bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4438228e-15, 0.17625, -0.02875)
 bones/3/enabled = true
 bones/3/position = Vector3(-1.4438228e-15, 0.17625, -0.02875)
-bones/3/rotation = Quaternion(-0.0325265, 0, 0, 0.99947095)
+bones/3/rotation = Quaternion(0.004020901, 0, 0, 0.999992)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "arm-left"
 bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09989677, 0.1115, 0.0115)
 bones/4/enabled = true
 bones/4/position = Vector3(0.09989677, 0.1115, 0.0115)
-bones/4/rotation = Quaternion(0, 0, -0.29083785, 0.95677245)
+bones/4/rotation = Quaternion(0, 0, -0.3715114, 0.9284285)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "arm-right"
 bones/5/parent = 3
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09989677, 0.1115, 0.0115)
 bones/5/enabled = true
 bones/5/position = Vector3(-0.09989677, 0.1115, 0.0115)
-bones/5/rotation = Quaternion(0, 0, 0.29083785, 0.95677245)
+bones/5/rotation = Quaternion(0, 0, 0.3715114, 0.9284285)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "head"
 bones/6/parent = 3
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8196893e-09, 0.167, 0.026388777)
 bones/6/enabled = true
 bones/6/position = Vector3(1.8196893e-09, 0.167, 0.026388777)
-bones/6/rotation = Quaternion(0, 0.0325265, 0, 0.99947095)
+bones/6/rotation = Quaternion(0, -0.004020901, 0, 0.999992)
 bones/6/scale = Vector3(1, 1, 1)
 
 [node name="body-mesh" type="MeshInstance3D" parent="Character/character-female-b2/character-female-b/Skeleton3D" unique_id=84630323]
@@ -3025,18 +3027,26 @@ mesh = SubResource("ArrayMesh_klyy3")
 skin = SubResource("Skin_5iooc")
 skeleton = NodePath("..")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Character/character-female-b2/character-female-b/Skeleton3D" unique_id=116099417]
-transform = Transform3D(1, 0, 0, 0, 0.99788404, 0.06501858, 0, -0.06501858, 0.99788404, -1.4438228e-15, 0.17625, -0.02875)
+[node name="Backpack" type="BoneAttachment3D" parent="Character/character-female-b2/character-female-b/Skeleton3D" unique_id=116099417]
+transform = Transform3D(1, 0, 0, 0, 0.9999677, -0.008041736, 0, 0.008041736, 0.9999677, -1.4438228e-15, 0.17625, -0.02875)
 bone_name = "torso"
 bone_idx = 3
 
-[node name="aid-defibrillator-red" type="MeshInstance3D" parent="Character/character-female-b2/character-female-b/Skeleton3D/BoneAttachment3D" unique_id=554377216]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.4438228e-15, -0.017075554, -0.1835901)
+[node name="aid-defibrillator-red" type="MeshInstance3D" parent="Character/character-female-b2/character-female-b/Skeleton3D/Backpack" unique_id=554377216]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 1.4465981e-15, -0.06391443, -0.1835901)
 mesh = SubResource("ArrayMesh_xw4j4")
 
-[node name="Group" type="MeshInstance3D" parent="Character/character-female-b2/character-female-b/Skeleton3D/BoneAttachment3D/aid-defibrillator-red" unique_id=1482355935]
+[node name="Group" type="MeshInstance3D" parent="Character/character-female-b2/character-female-b/Skeleton3D/Backpack/aid-defibrillator-red" unique_id=1482355935]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054999996, 0.065857865, 0.07)
 mesh = SubResource("ArrayMesh_bi00n")
+
+[node name="Torch" type="BoneAttachment3D" parent="Character/character-female-b2/character-female-b/Skeleton3D" unique_id=1378970740]
+transform = Transform3D(0.7239586, 0.6898435, 0, -0.6898212, 0.72393525, -0.008041736, -0.005547539, 0.0058218837, 0.9999677, 0.09989677, 0.28765392, -0.016353719)
+bone_name = "arm-left"
+bone_idx = 4
+
+[node name="Torch" parent="Character/character-female-b2/character-female-b/Skeleton3D/Torch" unique_id=15423196 instance=ExtResource("3_sue2m")]
+transform = Transform3D(0.8882538, 0.06957953, -0.45405272, -0.07809369, 0.99694604, -3.7252903e-09, 0.45266598, 0.03545865, 0.8909748, 0.21377769, -0.089151785, 0.067647785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character/character-female-b2" unique_id=194272070]
 libraries/ = SubResource("AnimationLibrary_yscu3")

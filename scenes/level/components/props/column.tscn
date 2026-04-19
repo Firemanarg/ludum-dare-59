@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bjo1cj01nt7jm"]
+
+[ext_resource type="PackedScene" uid="uid://b6ld20gb7c2ug" path="res://resources/prefabs/props/column_prefab.tscn" id="1_qeqb4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a6ro7"]
+size = Vector3(0.6, 1, 0.6)
+
+[node name="Column" unique_id=1373688029 instance=ExtResource("1_qeqb4")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=368377134]
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=514682490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_a6ro7")

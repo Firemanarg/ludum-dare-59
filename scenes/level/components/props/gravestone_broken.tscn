@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bgb06o81qae7g"]
+
+[ext_resource type="PackedScene" uid="uid://4q2sxy3tvsdu" path="res://resources/prefabs/props/gravestone_broken_prefab.tscn" id="1_qj0lm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hg24a"]
+size = Vector3(0.6, 0.4, 0.4)
+
+[node name="GravestoneBroken" unique_id=1373688029 instance=ExtResource("1_qj0lm")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1069581328]
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=115102611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19999999, 0.049999997)
+shape = SubResource("BoxShape3D_hg24a")

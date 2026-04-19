@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bbo7gpco30cf1"]
+
+[ext_resource type="PackedScene" uid="uid://crkvpmwvgarj4" path="res://resources/prefabs/props/altar_a_prefab.tscn" id="1_wya36"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4d4fg"]
+size = Vector3(1.6, 1, 1)
+
+[node name="AltarA" unique_id=1373688029 instance=ExtResource("1_wya36")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=278788681]
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1375302488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_4d4fg")
