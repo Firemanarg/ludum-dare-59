@@ -29,6 +29,9 @@ func _ready() -> void:
 	laser_mesh.set_visible(false)
 	_update_attack_list()
 	applied_attack.connect(_on_applied_attack)
+	FDLog.log_message(
+			"[CatStatue]: Setup Statue with a total of %d attacks. List: %s" % [
+				_attack_list.size(), _attack_list], FDLog.LogLevel.TRACE)
 	_start_attacking()
 
 
@@ -45,9 +48,8 @@ func _start_attacking() -> void:
 	_current_index = 0
 	if _attack_list.is_empty():
 		FDLog.log_message(
-				"[CatStatue]: Attempted to access index %d from attack_list, "
-				+ "but size is %d." % [_current_index, _attack_list.size()],
-				FDLog.LogLevel.WARNING)
+				"[CatStatue]: Attempted to access index %d " % _current_index
+				+ "from an empty attack_list.", FDLog.LogLevel.WARNING)
 		return
 	var initial_rotation: Vector3 = (
 			_attack_list[-1].get(&"target_rotation", Vector3(0, 0, 0)))
@@ -62,7 +64,7 @@ func _update_attack_list() -> void:
 				"[CatStatue]: No visualizer found. Statue will not attack.",
 				FDLog.LogLevel.NOTICE)
 		return
-	var next_rotation: Vector3 = get_child(0).rotation_degrees
+	var next_rotation: Vector3 = Vector3(0, 0, 0)
 	var children: Array[Node] = get_children()
 	children.reverse()
 	for child: Node in children:
@@ -75,6 +77,8 @@ func _update_attack_list() -> void:
 			})
 			next_rotation = child.rotation_degrees
 			child.queue_free()
+	if not _attack_list.is_empty():
+		_attack_list[-1][&"target_rotation"] = next_rotation
 
 
 func _apply_attack(attack_settings: Dictionary) -> void:
@@ -100,9 +104,9 @@ func _apply_attack(attack_settings: Dictionary) -> void:
 		await get_tree().create_timer(post_delay).timeout
 	if _rotation_tween:
 		_rotation_tween.kill()
-	if turn_duration > 0.0:
+	if turn_duration > 0.0 and not _attack_list.size() == 1:
 		_rotation_tween = get_tree().create_tween()
-		_rotation_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		_rotation_tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SPRING)
 		_rotation_tween.tween_property(
 				cat_character, "rotation_degrees", target_rotation, turn_duration)
 		await  _rotation_tween.finished
