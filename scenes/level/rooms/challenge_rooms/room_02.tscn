@@ -5,9 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://bdp14p427mgxx" path="res://scenes/level/components/walls/wall_b_curve.tscn" id="4_vam2l"]
 [ext_resource type="PackedScene" uid="uid://dgdf57m2yi6ka" path="res://scenes/level/components/walls/wall_b_damaged.tscn" id="5_3r3du"]
 [ext_resource type="PackedScene" uid="uid://boy0hrf3k3qnx" path="res://scenes/level/components/props/rocks_b.tscn" id="6_6xgor"]
-[ext_resource type="PackedScene" uid="uid://bjo1cj01nt7jm" path="res://scenes/level/components/props/column.tscn" id="7_y63bn"]
+[ext_resource type="PackedScene" uid="uid://csisjrwsgoeun" path="res://scenes/level/components/special/cat_statue.tscn" id="8_d4rst"]
 [ext_resource type="PackedScene" uid="uid://ccecmxme1vjmb" path="res://scenes/level/components/props/magic_button.tscn" id="8_qxehd"]
 [ext_resource type="PackedScene" uid="uid://gbnjp8t46h14" path="res://scenes/level/components/props/peeble.tscn" id="9_blh1y"]
+[ext_resource type="PackedScene" uid="uid://by6wxpd7yxsnf" path="res://scenes/level/components/special/cat_statue_components/cat_statue_visualizer.tscn" id="9_uk8gg"]
 
 [node name="Room02" unique_id=530671447 instance=ExtResource("1_3vgrd")]
 
@@ -105,20 +106,42 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.47
 [node name="RocksB" parent="Props" index="0" unique_id=1016423732 instance=ExtResource("6_6xgor")]
 transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 4.3530903, 0, -4.8383064)
 
-[node name="Column" parent="Props" index="1" unique_id=1086356421 instance=ExtResource("7_y63bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8800619, -9.536743e-07, 3.1813738)
-
-[node name="Column3" parent="Props" index="2" unique_id=2076370773 instance=ExtResource("7_y63bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.072722, 0, -4.184264)
-
-[node name="Column2" parent="Props" index="3" unique_id=1122398982 instance=ExtResource("7_y63bn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2620287, -9.536743e-07, 5.496404)
-
-[node name="MagicButton" parent="Props" index="4" unique_id=303220282 instance=ExtResource("8_qxehd")]
+[node name="MagicButton" parent="Props" index="1" unique_id=303220282 instance=ExtResource("8_qxehd")]
 transform = Transform3D(0.82711, 0, 0.5620401, 0, 1, 0, -0.5620401, 0, 0.82711, 1.2206955, -2.3841858e-07, -0.6335292)
 
-[node name="Peeble" parent="Props" index="5" unique_id=1623636304 instance=ExtResource("9_blh1y")]
+[node name="Peeble" parent="Props" index="2" unique_id=1623636304 instance=ExtResource("9_blh1y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.080947, 4.7019774e-38, -3.4169872)
 
-[node name="Peeble2" parent="Props" index="6" unique_id=1148084060 instance=ExtResource("9_blh1y")]
+[node name="Peeble2" parent="Props" index="3" unique_id=1148084060 instance=ExtResource("9_blh1y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4379687, -4.7683716e-07, 1.7151713)
+
+[node name="Statue" type="Node3D" parent="." index="3" unique_id=1237653782]
+
+[node name="CatStatue" parent="Statue" index="0" unique_id=2026219264 instance=ExtResource("8_d4rst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2559934, 0, 5.427759)
+
+[node name="CatStatueVisualizer2" parent="Statue/CatStatue" index="2" unique_id=860428115 instance=ExtResource("9_uk8gg")]
+transform = Transform3D(-0.9804811, 0, 0.19661371, 0, 1, 0, -0.19661371, 0, -0.9804811, 0.0054969788, 0, 0.014410496)
+pre_delay = 2.0
+turn_duration = 2.0
+
+[node name="CatStatueVisualizer4" parent="Statue/CatStatue" index="3" unique_id=726345222 instance=ExtResource("9_uk8gg")]
+transform = Transform3D(-0.22707617, 0, 0.9738771, 0, 1, 0, -0.9738771, 0, -0.22707617, 0.0054969788, 0, 0.014410496)
+pre_delay = 1.5
+turn_duration = 3.0
+
+[node name="CatStatue3" parent="Statue" index="1" unique_id=1598450083 instance=ExtResource("8_d4rst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8873746, 0, 3.1741824)
+
+[node name="CatStatueVisualizer" parent="Statue/CatStatue3" index="2" unique_id=1013742590 instance=ExtResource("9_uk8gg")]
+transform = Transform3D(-0.9991979, 0, -0.04004448, 0, 1, 0, 0.04004448, 0, -0.9991979, -0.010450363, 0, -0.0013804436)
+pre_delay = 3.0
+post_delay = 1.0
+
+[node name="CatStatue2" parent="Statue" index="2" unique_id=88667063 instance=ExtResource("8_d4rst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3839283, 4.7683716e-07, -4.831147)
+
+[node name="CatStatueVisualizer3" parent="Statue/CatStatue2" index="2" unique_id=1457852912 instance=ExtResource("9_uk8gg")]
+transform = Transform3D(0.78600806, 0, 0.61821634, 0, 1, 0, -0.61821634, 0, 0.78600806, 0.0054969788, 0, 0.014410496)
+visible = false
+pre_delay = 5.0

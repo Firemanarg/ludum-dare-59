@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://d22r4oixm1mci" path="res://resources/shaders/phatom.gdshader" id="4_qkmgm"]
 [ext_resource type="Shader" uid="uid://cdjw2ct4viaip" path="res://resources/shaders/vignette.gdshader" id="5_hnne4"]
 [ext_resource type="Shader" uid="uid://br7e08vmvhnbm" path="res://resources/shaders/transparent_wall.gdshader" id="7_wcngd"]
+[ext_resource type="PackedScene" uid="uid://xwg1xpytabi2" path="res://scenes/level/rooms/challenge_rooms/room_01.tscn" id="8_xv074"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h3e3j"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
