@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b3qjceckgd4uc"]
+
+[ext_resource type="Script" uid="uid://c4wn0becqhkh" path="res://scenes/level/rooms/safe_rooms/treasure_door_safe_room.gd" id="1_0warj"]
+[ext_resource type="PackedScene" uid="uid://bh3r0dqjtmmnc" path="res://scenes/level/rooms/default_components/start_safe_room_components.tscn" id="2_jefyo"]
+
+[node name="TreasureDoorSafeRoom" type="Node3D" unique_id=600078745]
+script = ExtResource("1_0warj")
+metadata/_custom_type_script = "uid://b1wdugwdvbcwx"
+
+[node name="StartSafeRoomComponents" parent="." unique_id=1838413567 instance=ExtResource("2_jefyo")]
+metadata/_edit_lock_ = true
