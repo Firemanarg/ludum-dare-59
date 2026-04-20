@@ -93,8 +93,6 @@ func _generate_level(level_seed: int) -> void:
 			randi_range(0, available_corridors.size()))
 	_setup_start_safe_room()
 	_setup_treasure_safe_room()
-	print("Start Room Index: ", _start_room_corridor_index)
-	print("Treasure Room Index: ", _treasure_room_corridor_index)
 @warning_ignore_restore("integer_division")
 
 
