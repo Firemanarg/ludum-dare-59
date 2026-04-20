@@ -20,6 +20,7 @@ script = ExtResource("1_wfykn")
 [node name="CatCharacter" parent="." unique_id=1785082727 instance=ExtResource("3_ja6f6")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 
 [node name="LaserMesh" type="MeshInstance3D" parent="CatCharacter" unique_id=633131929]
 unique_name_in_owner = true

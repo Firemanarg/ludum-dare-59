@@ -33,7 +33,6 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	print("current index: ", _current_index)
 	pass
 
 
@@ -43,13 +42,16 @@ func _physics_process(_delta: float) -> void:
 # ------------------------------------------------------------------------------
 
 func _start_attacking() -> void:
-	_current_index = _attack_list.size() - 1
-	if _current_index >= _attack_list.size() or _current_index < 0:
+	_current_index = 0
+	if _attack_list.is_empty():
 		FDLog.log_message(
 				"[CatStatue]: Attempted to access index %d from attack_list, "
 				+ "but size is %d." % [_current_index, _attack_list.size()],
 				FDLog.LogLevel.WARNING)
 		return
+	var initial_rotation: Vector3 = (
+			_attack_list[-1].get(&"target_rotation", Vector3(0, 0, 0)))
+	cat_character.rotation_degrees = initial_rotation
 	_apply_attack(_attack_list[_current_index])
 
 
@@ -65,7 +67,7 @@ func _update_attack_list() -> void:
 	children.reverse()
 	for child: Node in children:
 		if child is CatStatueVisualizer:
-			_attack_list.append({
+			_attack_list.push_front({
 				&"pre_delay": child.pre_delay,
 				&"post_delay": child.post_delay,
 				&"turn_duration": child.turn_duration,
