@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c7ppkm5sqcdp2" path="res://scenes/level/corridors/corridor.gd" id="1_wu3tf"]
 [ext_resource type="PackedScene" uid="uid://dqs51x6eepsvg" path="res://resources/prefabs/walls/wall_a_prefab.tscn" id="2_ptn0k"]
+[ext_resource type="PackedScene" uid="uid://und811tdgbjn" path="res://scenes/level/components/props/rocks_a.tscn" id="3_58k8y"]
+[ext_resource type="PackedScene" uid="uid://boy0hrf3k3qnx" path="res://scenes/level/components/props/rocks_b.tscn" id="4_xd8x8"]
+[ext_resource type="PackedScene" uid="uid://c1hca4qm4l34y" path="res://scenes/level/components/props/rocks_c.tscn" id="5_qh1dj"]
+[ext_resource type="PackedScene" uid="uid://gbnjp8t46h14" path="res://scenes/level/components/props/peeble.tscn" id="6_bmn6c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ptn0k"]
 size = Vector3(6, 1.5, 1)
@@ -113,7 +117,7 @@ collision_layer = 2
 collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="DefaultCorridorComponents/Floor" unique_id=1324881888]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00036382675, -0.1, 0.00730145)
 mesh = SubResource("BoxMesh_ke66b")
 surface_material_override/0 = SubResource("StandardMaterial3D_iunub")
 
@@ -132,9 +136,76 @@ metadata/_edit_lock_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ObstructionLayer/ObstructionCollision" unique_id=744913300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+visible = false
 mesh = SubResource("BoxMesh_wu3tf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ObstructionLayer/ObstructionCollision" unique_id=1280595951]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("BoxShape3D_rqe8b")
 metadata/_edit_lock_ = true
+
+[node name="RocksA" parent="ObstructionLayer" unique_id=1016423732 instance=ExtResource("3_58k8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5833712, 0, -0.61769325)
+
+[node name="RocksB" parent="ObstructionLayer" unique_id=400124109 instance=ExtResource("4_xd8x8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1465778, 0, -0.6004019)
+
+[node name="RocksB2" parent="ObstructionLayer" unique_id=1472749959 instance=ExtResource("4_xd8x8")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.1465778, 0, 0.24748087)
+
+[node name="RocksC" parent="ObstructionLayer" unique_id=1906595523 instance=ExtResource("5_qh1dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6024842, 0, 0.7788172)
+
+[node name="Peeble" parent="ObstructionLayer" unique_id=856184684 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.082, 0, 0.321)
+
+[node name="Peeble2" parent="ObstructionLayer" unique_id=749443376 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.082, 0, 0.8854525)
+
+[node name="Peeble3" parent="ObstructionLayer" unique_id=844138495 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4415362, 0, 0.8854525)
+
+[node name="Peeble4" parent="ObstructionLayer" unique_id=1377493473 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4415362, 0, -0.08177662)
+
+[node name="Peeble8" parent="ObstructionLayer" unique_id=1206081675 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15284193, 0, -1.1114941)
+
+[node name="Peeble5" parent="ObstructionLayer" unique_id=1229323384 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4196434, 0, 1.2581708)
+
+[node name="Peeble6" parent="ObstructionLayer" unique_id=477868632 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39579964, 0, 1.2581708)
+
+[node name="Peeble9" parent="ObstructionLayer" unique_id=649076166 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6030872, 0, 1.2581708)
+
+[node name="Peeble18" parent="ObstructionLayer" unique_id=1092014246 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6069043, 0, 1.2581708)
+
+[node name="Peeble10" parent="ObstructionLayer" unique_id=660551222 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6030872, 0, 0.5932269)
+
+[node name="Peeble11" parent="ObstructionLayer" unique_id=1296261104 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6030872, 0, -0.3296163)
+
+[node name="Peeble12" parent="ObstructionLayer" unique_id=307010872 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6030872, 0, -1.0397186)
+
+[node name="Peeble13" parent="ObstructionLayer" unique_id=227594716 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.085462, 0, -1.1855724)
+
+[node name="Peeble14" parent="ObstructionLayer" unique_id=1792397293 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.120775, 0, -0.34053627)
+
+[node name="Peeble15" parent="ObstructionLayer" unique_id=984268366 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4818976, 0, 0.18724275)
+
+[node name="Peeble16" parent="ObstructionLayer" unique_id=1160873116 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4818976, 0, 0.7857897)
+
+[node name="Peeble17" parent="ObstructionLayer" unique_id=185341725 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1914356, 0, 1.2287955)
+
+[node name="Peeble7" parent="ObstructionLayer" unique_id=224271843 instance=ExtResource("6_bmn6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46052432, 0, 0.3500787)
