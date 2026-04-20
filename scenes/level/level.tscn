@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://bkv14nkcp23if"]
 
 [ext_resource type="PackedScene" uid="uid://bl65ewnpqoymu" path="res://scenes/level/player/player.tscn" id="1_h3e3j"]
-[ext_resource type="PackedScene" uid="uid://brxjanjenimnh" path="res://scenes/level/room.tscn" id="1_vpf64"]
 [ext_resource type="Script" uid="uid://ddy18cs34fict" path="res://scenes/level/level.gd" id="1_xv074"]
 [ext_resource type="Shader" uid="uid://ciigxeah5e0n1" path="res://resources/shaders/fisheye.gdshader" id="2_nbgty"]
+[ext_resource type="PackedScene" uid="uid://dwucyhhg3exwv" path="res://scenes/level/rooms/test_room.tscn" id="2_xv074"]
 [ext_resource type="Shader" uid="uid://dwdr4diihway3" path="res://resources/shaders/tilt_shift.gdshader" id="3_i166f"]
-[ext_resource type="PackedScene" uid="uid://ccecmxme1vjmb" path="res://scenes/level/components/props/magic_button.tscn" id="3_tf2q7"]
 [ext_resource type="Shader" uid="uid://d22r4oixm1mci" path="res://resources/shaders/phatom.gdshader" id="4_qkmgm"]
 [ext_resource type="Shader" uid="uid://cdjw2ct4viaip" path="res://resources/shaders/vignette.gdshader" id="5_hnne4"]
 [ext_resource type="Shader" uid="uid://br7e08vmvhnbm" path="res://resources/shaders/transparent_wall.gdshader" id="7_wcngd"]
@@ -38,7 +37,7 @@ shader = ExtResource("7_wcngd")
 shader_parameter/Cam1_texture = SubResource("ViewportTexture_wcngd")
 shader_parameter/Cam2_texture = SubResource("ViewportTexture_xv074")
 shader_parameter/Target_Pos_PX = Vector2(950, 500)
-shader_parameter/Radius = 100.0
+shader_parameter/Radius = 120.0
 shader_parameter/Edge_Smooth = 120.0000057
 shader_parameter/Texture_Size = Vector2(1920, 1080)
 shader_parameter/Pixelize_Edge = 0.0
@@ -70,7 +69,7 @@ shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sytrn"]
 shader = ExtResource("5_hnne4")
-shader_parameter/vignette_intensity = 2.54
+shader_parameter/vignette_intensity = 5.0
 shader_parameter/vignette_opacity = 1.0
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
@@ -84,10 +83,7 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1036397847]
 environment = SubResource("Environment_i166f")
 
-[node name="Room" parent="." unique_id=530671447 instance=ExtResource("1_vpf64")]
-
-[node name="MagicButton" parent="." unique_id=303220282 instance=ExtResource("3_tf2q7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0982175, 0, -0.14672041)
+[node name="TestRoom" parent="." unique_id=530671447 instance=ExtResource("2_xv074")]
 
 [node name="Player" parent="." unique_id=1220500807 instance=ExtResource("1_h3e3j")]
 unique_name_in_owner = true
@@ -120,7 +116,7 @@ grow_vertical = 2
 
 [node name="SubViewportNoWalls" type="SubViewport" parent="EffectsLayer/ViewportTextures" unique_id=643823339]
 transparent_bg = true
-size = Vector2i(1280, 720)
+size = Vector2i(1920, 1080)
 
 [node name="PivotCamera3DNoWalls" type="Node3D" parent="EffectsLayer/ViewportTextures/SubViewportNoWalls" unique_id=1914502498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47581005, -9.536743e-07)
@@ -136,7 +132,7 @@ size = 0.03
 
 [node name="SubViewportWalls" type="SubViewport" parent="EffectsLayer/ViewportTextures" unique_id=2041891719]
 transparent_bg = true
-size = Vector2i(1280, 720)
+size = Vector2i(1920, 1080)
 
 [node name="PivotCamera3DWalls" type="Node3D" parent="EffectsLayer/ViewportTextures/SubViewportWalls" unique_id=1709786737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.475811, 0)
@@ -182,6 +178,7 @@ copy_mode = 2
 
 [node name="TiltShiftEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=722160498]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_qkmgm")
 layout_mode = 1
 anchors_preset = 15
@@ -190,8 +187,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="BackBufferCopy2" type="BackBufferCopy" parent="EffectsLayer/EffectsSubLayer1" unique_id=1637143089]
+copy_mode = 2
+
 [node name="PhatomEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=2112250581]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_hnne4")
 layout_mode = 1
 anchors_preset = 15
@@ -213,6 +214,7 @@ grow_vertical = 2
 
 [node name="VignetteEffect2" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=2024781247]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_sytrn")
 layout_mode = 1
 anchors_preset = 15

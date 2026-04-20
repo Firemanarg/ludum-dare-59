@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://ecrqnhi3ksel"]
+
+[ext_resource type="PackedScene" uid="uid://cgh20upky6ywq" path="res://assets/meshes/cat_character/animal-cat.glb" id="1_so7m0"]
+[ext_resource type="Script" uid="uid://b3bfb0fkuhrx1" path="res://resources/prefabs/characters/cat_character.gd" id="2_c8gur"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_c8gur"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_so7m0"]
+transparency = 1
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_so7m0"]
+animation = &"dance"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c8gur"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_28uti"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_muhdr"]
+animation = &"dance"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7uegm"]
+animation = &"static"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_kx01y"]
+filter_enabled = true
+filters = ["animal-cat/root/body/tail"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_6xw23"]
+filter_enabled = true
+filters = ["animal-cat/root/body"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5qlhk"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_so7m0"]
+graph_offset = Vector2(-321.04816, 126.72775)
+nodes/output/position = Vector2(580, 280)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_7uegm")
+nodes/Animation/position = Vector2(-240, 80)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_28uti")
+"nodes/Animation 2/position" = Vector2(-240, 260)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_6xw23")
+nodes/Blend2/position = Vector2(-20, 120)
+"nodes/Blend2 2/node" = SubResource("AnimationNodeBlend2_kx01y")
+"nodes/Blend2 2/position" = Vector2(280, 280)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_muhdr")
+"nodes/Animation 3/position" = Vector2(-180, 500)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_5qlhk")
+nodes/TimeScale/position = Vector2(20, 440)
+node_connections = [&"output", 0, &"Blend2 2", &"Blend2", 0, &"Animation", &"Blend2", 1, &"Animation 2", &"Blend2 2", 0, &"Blend2", &"Blend2 2", 1, &"TimeScale", &"TimeScale", 0, &"Animation 3"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h1u2o"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xb6qk"]
+animation = &"static"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mb2eb"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_muhdr"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7uegm"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kx01y"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6xw23"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5qlhk"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_786m3"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q1cky"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_emd73"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c8gur"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h1u2o"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_28uti"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mqaoa"]
+states/dance/node = SubResource("AnimationNodeAnimation_so7m0")
+states/dance/position = Vector2(603, 177)
+states/idle/node = SubResource("AnimationNodeAnimation_c8gur")
+states/idle/position = Vector2(460, 100)
+states/laser/node = SubResource("AnimationNodeBlendTree_so7m0")
+states/laser/position = Vector2(603, 9)
+states/run/node = SubResource("AnimationNodeAnimation_h1u2o")
+states/run/position = Vector2(386, -10)
+states/static/node = SubResource("AnimationNodeAnimation_xb6qk")
+states/static/position = Vector2(330, 100)
+states/walk/node = SubResource("AnimationNodeAnimation_mb2eb")
+states/walk/position = Vector2(386, 208)
+transitions = ["static", "idle", SubResource("AnimationNodeStateMachineTransition_muhdr"), "idle", "static", SubResource("AnimationNodeStateMachineTransition_7uegm"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_kx01y"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_6xw23"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_5qlhk"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_786m3"), "idle", "dance", SubResource("AnimationNodeStateMachineTransition_q1cky"), "dance", "idle", SubResource("AnimationNodeStateMachineTransition_emd73"), "idle", "laser", SubResource("AnimationNodeStateMachineTransition_c8gur"), "laser", "idle", SubResource("AnimationNodeStateMachineTransition_h1u2o"), "Start", "static", SubResource("AnimationNodeStateMachineTransition_28uti")]
+graph_offset = Vector2(-106, -71)
+
+[node name="CatCharacter" unique_id=1785082727 instance=ExtResource("1_so7m0")]
+script = ExtResource("2_c8gur")
+
+[node name="animal-cat" parent="." index="0" unique_id=133425017]
+transform = Transform3D(0.57, 0, 0, 0, 0.57, 0, 0, 0, 0.57, 0, 0, 0)
+
+[node name="body" parent="animal-cat/root" parent_id_path=PackedInt32Array(996242597) index="0" unique_id=1660385792]
+transform = Transform3D(0.99768054, -0.060871657, -0.03046415, 0.060900014, 0.99814385, 2.9508374e-06, 0.030407425, -0.0018582112, 0.99953586, 1.5731821e-08, 0.18124998, -3.8083503e-08)
+
+[node name="tail" parent="animal-cat/root/body" index="1" unique_id=508608034]
+transform = Transform3D(0.98841804, 0.15175568, 0, -0.15175568, 0.98841804, 0, 0, 0, 1, 0, 0.6375, -0.5483935)
+
+[node name="GlowingEyes" type="Node3D" parent="animal-cat/root/body" index="2" unique_id=461871936]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.6)
+visible = false
+
+[node name="LeftGlowingEye" type="MeshInstance3D" parent="animal-cat/root/body/GlowingEyes" index="0" unique_id=588214422]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.26901147, 0, 0.011221588)
+mesh = SubResource("SphereMesh_c8gur")
+surface_material_override/0 = SubResource("StandardMaterial3D_so7m0")
+
+[node name="RightGlowingEye" type="MeshInstance3D" parent="animal-cat/root/body/GlowingEyes" index="1" unique_id=111996491]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.269, 0, 0.011)
+mesh = SubResource("SphereMesh_c8gur")
+surface_material_override/0 = SubResource("StandardMaterial3D_so7m0")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=218512098]
+tree_root = SubResource("AnimationNodeStateMachine_mqaoa")
+anim_player = NodePath("../AnimationPlayer")
+parameters/laser/Blend2/blend_amount = 0.5
+"parameters/laser/Blend2 2/blend_amount" = 1.0
+parameters/laser/TimeScale/scale = 2.0
