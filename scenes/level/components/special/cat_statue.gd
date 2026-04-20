@@ -7,9 +7,9 @@ signal applied_attack
 
 # ------------------------------------------------------------------------------
 
-const ATTACK_DURATION: float = 2.0
+const ATTACK_DURATION: float = 0.2
 const TURN_ON_EYES_ANIMATION_DURATION: float = 4.0
-const TURN_OFF_EYES_ANIMATION_DURATION: float = 1.5
+const TURN_OFF_EYES_ANIMATION_DURATION: float = 0.8
 
 
 @export var _attack_list: Array[Dictionary] = []

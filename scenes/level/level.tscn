@@ -21,10 +21,6 @@ background_mode = 2
 sky = SubResource("Sky_nbgty")
 tonemap_mode = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i166f"]
-shader = ExtResource("2_nbgty")
-shader_parameter/effect_amount = 1.20000017575
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_wcngd"]
 viewport_path = NodePath("EffectsLayer/ViewportTextures/SubViewportWalls")
 
@@ -43,29 +39,27 @@ shader_parameter/Texture_Size = Vector2(1920, 1080)
 shader_parameter/Pixelize_Edge = 0.0
 shader_parameter/Pixel_Size_PX = 23.791
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i166f"]
+shader = ExtResource("2_nbgty")
+shader_parameter/effect_amount = -0.19999989075000002
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qkmgm"]
 shader = ExtResource("3_i166f")
-shader_parameter/limit = 0.3710000176225
+shader_parameter/limit = 0.5
 shader_parameter/blur = 3.0000001425
-shader_parameter/intensity = 0.330000015675
+shader_parameter/intensity = 0.414000019665
 shader_parameter/debug = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hnne4"]
 shader = ExtResource("4_qkmgm")
 shader_parameter/aberration_strength = 1.0000000475
 shader_parameter/blur_strength = 0.2000000095
-shader_parameter/noise_strength = 0.048
+shader_parameter/noise_strength = 0.0
 shader_parameter/vignette_strength = 0.6000000285
-shader_parameter/scanline_strength = 0.016
-shader_parameter/distortion_strength = 0.1
-shader_parameter/ghost_strength = 0.030000001425
+shader_parameter/scanline_strength = 0.0
+shader_parameter/distortion_strength = 0.1070000050825
+shader_parameter/ghost_strength = 0.0830000039425
 shader_parameter/flicker_strength = 0.005
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vpf64"]
-shader = ExtResource("5_hnne4")
-shader_parameter/vignette_intensity = 0.6
-shader_parameter/vignette_opacity = 0.5
-shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sytrn"]
 shader = ExtResource("5_hnne4")
@@ -153,9 +147,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FisheyeEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=1468256234]
+[node name="TransparentWallEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=884533962]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_i166f")
+material = SubResource("ShaderMaterial_xv074")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -163,9 +157,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TransparentWallEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=884533962]
+[node name="FisheyeEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=1468256234]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_xv074")
+material = SubResource("ShaderMaterial_i166f")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -178,7 +172,6 @@ copy_mode = 2
 
 [node name="TiltShiftEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=722160498]
 unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_qkmgm")
 layout_mode = 1
 anchors_preset = 15
@@ -192,7 +185,6 @@ copy_mode = 2
 
 [node name="PhatomEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=2112250581]
 unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_hnne4")
 layout_mode = 1
 anchors_preset = 15
@@ -201,20 +193,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VignetteEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=1012095986]
+[node name="VignetteEffect" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=2024781247]
 unique_name_in_owner = true
-visible = false
-material = SubResource("ShaderMaterial_vpf64")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VignetteEffect2" type="ColorRect" parent="EffectsLayer/EffectsSubLayer1" unique_id=2024781247]
-unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_sytrn")
 layout_mode = 1
 anchors_preset = 15
