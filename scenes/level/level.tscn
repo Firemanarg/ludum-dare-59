@@ -97,6 +97,7 @@ light_color = Color(1, 0.81554437, 0.6039661, 1)
 light_energy = 3.787
 
 [node name="EffectsLayer" type="CanvasLayer" parent="." unique_id=979753154]
+visible = false
 
 [node name="ViewportTextures" type="Control" parent="EffectsLayer" unique_id=628720985]
 layout_mode = 3
@@ -201,5 +202,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Room01" parent="." unique_id=530671447 instance=ExtResource("8_xv074")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037666798, -9.536743e-07, -0.007050514)
+[node name="TopViewCamera3D" type="Camera3D" parent="." unique_id=707356693]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 21, 9, 21)
+projection = 1
+current = true
+size = 80.0
+
+[node name="Corridors" type="Node3D" parent="." unique_id=1465005898]
+unique_name_in_owner = true
+
+[node name="ChallengeRooms" type="Node3D" parent="." unique_id=585503235]
+unique_name_in_owner = true
+
+[node name="SafeRooms" type="Node3D" parent="." unique_id=2026699204]
+unique_name_in_owner = true

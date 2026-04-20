@@ -1,14 +1,13 @@
-class_name Corridor
-extends Node3D
+extends SafeRoom
 
 # ------------------------------------------------------------------------------
 
-@onready var _obstruction_layer: Node3D = get_node("%ObstructionLayer")
+@onready var corridor: Corridor = get_node("%Corridor")
 
 # ------------------------------------------------------------------------------
 
 func _ready() -> void:
-	pass
+	corridor.unobstruct()
 
 
 func _process(_delta: float) -> void:
@@ -19,12 +18,3 @@ func _physics_process(_delta: float) -> void:
 	pass
 
 # ------------------------------------------------------------------------------
-
-func unobstruct() -> void:
-	_unobstruct()
-
-# ------------------------------------------------------------------------------
-
-func _unobstruct() -> void:
-	_obstruction_layer.queue_free()
-	_obstruction_layer = null
