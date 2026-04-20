@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bl65ewnpqoymu" path="res://scenes/level/player/player.tscn" id="1_h3e3j"]
 [ext_resource type="Script" uid="uid://ddy18cs34fict" path="res://scenes/level/level.gd" id="1_xv074"]
 [ext_resource type="Shader" uid="uid://ciigxeah5e0n1" path="res://resources/shaders/fisheye.gdshader" id="2_nbgty"]
-[ext_resource type="PackedScene" uid="uid://bt12sot3ywwwi" path="res://scenes/level/rooms/challenge_rooms/room_00.tscn" id="2_xv074"]
 [ext_resource type="Shader" uid="uid://dwdr4diihway3" path="res://resources/shaders/tilt_shift.gdshader" id="3_i166f"]
 [ext_resource type="Shader" uid="uid://d22r4oixm1mci" path="res://resources/shaders/phatom.gdshader" id="4_qkmgm"]
 [ext_resource type="Shader" uid="uid://cdjw2ct4viaip" path="res://resources/shaders/vignette.gdshader" id="5_hnne4"]
@@ -77,8 +76,6 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1036397847]
 environment = SubResource("Environment_i166f")
 
-[node name="Room00" parent="." unique_id=530671447 instance=ExtResource("2_xv074")]
-
 [node name="Player" parent="." unique_id=1220500807 instance=ExtResource("1_h3e3j")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47581005, -9.536743e-07)
@@ -99,6 +96,7 @@ light_color = Color(1, 0.81554437, 0.6039661, 1)
 light_energy = 3.787
 
 [node name="EffectsLayer" type="CanvasLayer" parent="." unique_id=979753154]
+visible = false
 
 [node name="ViewportTextures" type="Control" parent="EffectsLayer" unique_id=628720985]
 layout_mode = 3
@@ -202,3 +200,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TopViewCamera3D" type="Camera3D" parent="." unique_id=707356693]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 21, 9, 21)
+projection = 1
+current = true
+size = 80.0
+
+[node name="Corridors" type="Node3D" parent="." unique_id=1465005898]
+unique_name_in_owner = true
+
+[node name="ChallengeRooms" type="Node3D" parent="." unique_id=585503235]
+unique_name_in_owner = true
+
+[node name="SafeRooms" type="Node3D" parent="." unique_id=2026699204]
+unique_name_in_owner = true
