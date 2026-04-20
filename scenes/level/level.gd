@@ -33,6 +33,7 @@ var _margin_corridors: Array[Corridor] = []
 var _margin_corridor_link_offset: PackedVector3Array = []
 var _start_room_corridor_index: int = 0
 var _treasure_room_corridor_index: int = 0
+var _treasure_key_room_index: int = 0
 
 @onready var transparent_wall_effect: ColorRect = get_node("%TransparentWallEffect")
 @onready var player: Player = get_node("%Player")
@@ -88,11 +89,12 @@ func _generate_level(level_seed: int) -> void:
 	_setup_internal_corridors()
 	var available_corridors: Array = range(_margin_corridors.size())
 	_start_room_corridor_index = available_corridors.pop_at(
-			randi_range(0, available_corridors.size()))
+			randi_range(0, available_corridors.size() - 1))
 	_treasure_room_corridor_index = available_corridors.pop_at(
-			randi_range(0, available_corridors.size()))
+			randi_range(0, available_corridors.size() - 1))
 	_setup_start_safe_room()
 	_setup_treasure_safe_room()
+	_setup_treasure_door_key()
 @warning_ignore_restore("integer_division")
 
 
@@ -100,48 +102,49 @@ func _setup_external_corridors() -> void:
 	var offset: Vector3 = Vector3(0, 0, -CORRIDOR_LENGTH)
 	for index: int in ROWS_COUNT:
 		var initial_pos: Vector3 = _challenge_rooms[index].position
-		_setup_room_corridor(offset, initial_pos + offset, true, true)
+		_setup_room_corridor(offset, initial_pos + offset, -90, true)
 	offset = Vector3(0, 0, CORRIDOR_LENGTH)
 	for index: int in ROWS_COUNT:
 		var initial_pos: Vector3 = _challenge_rooms[index + 6].position
-		_setup_room_corridor(offset, initial_pos + offset, true, true)
+		_setup_room_corridor(offset, initial_pos + offset, 90, true)
 	offset = Vector3(-CORRIDOR_LENGTH, 0, 0)
 	for index: int in COLUMNS_COUNT:
 		var initial_pos: Vector3 = _challenge_rooms[index * ROWS_COUNT].position
-		_setup_room_corridor(offset, initial_pos + offset, false, true)
+		_setup_room_corridor(offset, initial_pos + offset, 0, true)
 	offset = Vector3(CORRIDOR_LENGTH, 0, 0)
 	for index: int in COLUMNS_COUNT:
 		var initial_pos: Vector3 = _challenge_rooms[index * ROWS_COUNT + 2].position
-		_setup_room_corridor(offset, initial_pos + offset, false, true)
+		_setup_room_corridor(offset, initial_pos + offset, 180, true)
 
 
 func _setup_internal_corridors() -> void:
 	var offset: Vector3 = Vector3(0, 0, -CORRIDOR_LENGTH)
 	for index: int in ROWS_COUNT:
 		var initial_pos: Vector3 = _challenge_rooms[index + 3].position
-		_setup_room_corridor(offset, initial_pos + offset, true, false)
+		_setup_room_corridor(offset, initial_pos + offset, 90, false)
 	offset = Vector3(0, 0, CORRIDOR_LENGTH)
 	for index: int in ROWS_COUNT:
 		var initial_pos: Vector3 = _challenge_rooms[index + 3].position
-		_setup_room_corridor(offset, initial_pos + offset, true, false)
+		_setup_room_corridor(offset, initial_pos + offset, 90, false)
 	offset = Vector3(CORRIDOR_LENGTH, 0, 0)
 	for index: int in COLUMNS_COUNT:
 		var initial_pos: Vector3 = _challenge_rooms[index * ROWS_COUNT].position
-		_setup_room_corridor(offset, initial_pos + offset, false, false)
+		_setup_room_corridor(offset, initial_pos + offset, 0, false)
 	offset = Vector3(CORRIDOR_LENGTH, 0, 0)
 	for index: int in COLUMNS_COUNT:
 		var initial_pos: Vector3 = _challenge_rooms[index * ROWS_COUNT + 1].position
-		_setup_room_corridor(offset, initial_pos + offset, false, false)
+		_setup_room_corridor(offset, initial_pos + offset, 0, false)
 
 
 func _setup_room_corridor(
 		linked_offset: Vector3, center_position: Vector3,
-		is_vertical: bool = false, is_margin_corridor: bool = false) -> Corridor:
+		room_degrees: float = 0.0, is_margin_corridor: bool = false) -> Corridor:
 	var corridor: Corridor = CORRIDOR.instantiate()
 	_corridors.append(corridor)
 	corridors_root.add_child(corridor)
 	corridor.position = center_position
-	corridor.rotation_degrees.y = 90.0 if is_vertical else 0.0
+	#corridor.rotation_degrees.y = 90.0 if is_vertical else 0.0
+	corridor.rotation_degrees.y = room_degrees
 	if is_margin_corridor:
 		_margin_corridors.append(corridor)
 		_margin_corridor_link_offset.append(linked_offset)
@@ -170,6 +173,14 @@ func _setup_treasure_safe_room() -> void:
 	safe_rooms_root.add_child(room)
 	room.rotation_degrees.y = corridor.rotation_degrees.y
 	room.position = corridor.position + room_offset
+
+
+func _setup_treasure_door_key() -> void:
+	_treasure_key_room_index = randi_range(0, MAX_CHALLENGE_ROOMS)
+	for index: int in _challenge_rooms.size():
+		var room: ChallengeRoom = _challenge_rooms[index]
+		if not index == _treasure_key_room_index:
+			room.remove_key()
 
 
 func _update_transparent_wall_effect_target() -> void:

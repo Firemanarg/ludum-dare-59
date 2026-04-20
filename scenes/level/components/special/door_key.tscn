@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c4o0fvhpdwwex"]
+
+[ext_resource type="Script" uid="uid://bww332dc18iva" path="res://scenes/level/components/special/door_key.gd" id="1_ygww1"]
+[ext_resource type="PackedScene" uid="uid://i7wgiq3r3akg" path="res://resources/prefabs/props/key_prefab.tscn" id="2_gsjl8"]
+
+[node name="DoorKey" type="Node3D" unique_id=1503837458]
+script = ExtResource("1_ygww1")
+
+[node name="KeyPrefab" parent="." unique_id=353591043 instance=ExtResource("2_gsjl8")]
