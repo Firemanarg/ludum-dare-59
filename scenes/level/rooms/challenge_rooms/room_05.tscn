@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bbegutmo2wkyw"]
 
-[ext_resource type="PackedScene" uid="uid://brxjanjenimnh" path="res://scenes/level/room.tscn" id="1_3wt5s"]
+[ext_resource type="PackedScene" uid="uid://brxjanjenimnh" path="res://scenes/level/rooms/challenge_room.tscn" id="1_3wt5s"]
 [ext_resource type="PackedScene" uid="uid://c5r3ov4pga3ky" path="res://scenes/level/components/walls/wall_b.tscn" id="2_663af"]
 [ext_resource type="PackedScene" uid="uid://bdp14p427mgxx" path="res://scenes/level/components/walls/wall_b_curve.tscn" id="3_o7f8f"]
 [ext_resource type="PackedScene" uid="uid://dgdf57m2yi6ka" path="res://scenes/level/components/walls/wall_b_damaged.tscn" id="4_56buo"]

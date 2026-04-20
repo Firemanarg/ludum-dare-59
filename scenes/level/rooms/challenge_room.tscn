@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://brxjanjenimnh"]
+
+[ext_resource type="Script" uid="uid://dkgncnd4ei2s0" path="res://scenes/level/rooms/challenge_room.gd" id="1_oudg1"]
+[ext_resource type="PackedScene" uid="uid://n6ug8rimthdt" path="res://scenes/level/rooms/default_components/default_challenge_room_components.tscn" id="2_ny5fw"]
+
+[node name="Room" type="Node3D" unique_id=1521124774]
+script = ExtResource("1_oudg1")
+metadata/_custom_type_script = "uid://ct1d51wl7x6ss"
+
+[node name="DefaultRoomComponents" parent="." unique_id=1838413567 instance=ExtResource("2_ny5fw")]

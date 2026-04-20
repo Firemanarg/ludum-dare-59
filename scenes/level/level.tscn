@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bl65ewnpqoymu" path="res://scenes/level/player/player.tscn" id="1_h3e3j"]
 [ext_resource type="Script" uid="uid://ddy18cs34fict" path="res://scenes/level/level.gd" id="1_xv074"]
 [ext_resource type="Shader" uid="uid://ciigxeah5e0n1" path="res://resources/shaders/fisheye.gdshader" id="2_nbgty"]
-[ext_resource type="PackedScene" uid="uid://dwucyhhg3exwv" path="res://scenes/level/rooms/test_room.tscn" id="2_xv074"]
+[ext_resource type="PackedScene" uid="uid://bt12sot3ywwwi" path="res://scenes/level/rooms/challenge_rooms/room_00.tscn" id="2_xv074"]
 [ext_resource type="Shader" uid="uid://dwdr4diihway3" path="res://resources/shaders/tilt_shift.gdshader" id="3_i166f"]
 [ext_resource type="Shader" uid="uid://d22r4oixm1mci" path="res://resources/shaders/phatom.gdshader" id="4_qkmgm"]
 [ext_resource type="Shader" uid="uid://cdjw2ct4viaip" path="res://resources/shaders/vignette.gdshader" id="5_hnne4"]
@@ -41,7 +41,7 @@ shader_parameter/Pixel_Size_PX = 23.791
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i166f"]
 shader = ExtResource("2_nbgty")
-shader_parameter/effect_amount = -0.19999989075000002
+shader_parameter/effect_amount = -0.19999989075
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qkmgm"]
 shader = ExtResource("3_i166f")
@@ -76,6 +76,8 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1036397847]
 environment = SubResource("Environment_i166f")
+
+[node name="Room00" parent="." unique_id=530671447 instance=ExtResource("2_xv074")]
 
 [node name="Player" parent="." unique_id=1220500807 instance=ExtResource("1_h3e3j")]
 unique_name_in_owner = true
