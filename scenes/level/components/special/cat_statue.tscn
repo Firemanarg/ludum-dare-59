@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://csisjrwsgoeun"]
+
+[ext_resource type="PackedScene" uid="uid://bjo1cj01nt7jm" path="res://scenes/level/components/props/column.tscn" id="1_ou4k3"]
+[ext_resource type="Script" uid="uid://bxyjqw8is7qdp" path="res://scenes/level/components/special/cat_statue.gd" id="1_wfykn"]
+[ext_resource type="PackedScene" uid="uid://ecrqnhi3ksel" path="res://resources/prefabs/characters/cat_character.tscn" id="3_ja6f6"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_ja6f6"]
+size = Vector3(22, 22, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbw2j"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.37254903)
+
+[node name="CatStatue" type="Node3D" unique_id=2026219264]
+script = ExtResource("1_wfykn")
+
+[node name="Column" parent="." unique_id=1373688029 instance=ExtResource("1_ou4k3")]
+
+[node name="CatCharacter" parent="." unique_id=1785082727 instance=ExtResource("3_ja6f6")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+
+[node name="LaserMesh" type="MeshInstance3D" parent="CatCharacter" unique_id=633131929]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 11)
+mesh = SubResource("PrismMesh_ja6f6")
+surface_material_override/0 = SubResource("StandardMaterial3D_gbw2j")
