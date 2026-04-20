@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d28gpwcuwct0i"]
+
+[ext_resource type="Script" uid="uid://b7hno081vk6f" path="res://scenes/level/rooms/safe_rooms/treasure_chamber_safe_room.gd" id="1_jlan8"]
+[ext_resource type="PackedScene" uid="uid://d0km7piixdor1" path="res://scenes/level/rooms/default_components/treasure_chamber_safe_room_components.tscn" id="2_jlan8"]
+
+[node name="TreasureChamberSafeRoom" type="Node3D" unique_id=600078745]
+script = ExtResource("1_jlan8")
+metadata/_custom_type_script = "uid://b1wdugwdvbcwx"
+
+[node name="DefaultChallengeRoomComponents" parent="." unique_id=1838413567 instance=ExtResource("2_jlan8")]

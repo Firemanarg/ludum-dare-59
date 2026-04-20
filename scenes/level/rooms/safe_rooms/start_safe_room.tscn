@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://jxqwrlha4wty"]
+
+[ext_resource type="Script" uid="uid://bfu3u0r0vjj6d" path="res://scenes/level/rooms/safe_rooms/start_safe_room.gd" id="1_udw67"]
+[ext_resource type="PackedScene" uid="uid://bh3r0dqjtmmnc" path="res://scenes/level/rooms/default_components/start_safe_room_components.tscn" id="2_udw67"]
+
+[node name="StartSafeRoom" type="Node3D" unique_id=600078745]
+script = ExtResource("1_udw67")
+metadata/_custom_type_script = "uid://b1wdugwdvbcwx"
+
+[node name="StartSafeRoomComponents" parent="." unique_id=1838413567 instance=ExtResource("2_udw67")]
+metadata/_edit_lock_ = true

@@ -1,6 +1,7 @@
 class_name Room
 extends Node3D
 
+
 func _ready() -> void:
 	pass
 

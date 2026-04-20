@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://brxjanjenimnh"]
-
-[ext_resource type="Script" uid="uid://ct1d51wl7x6ss" path="res://scenes/level/room.gd" id="1_e4yy5"]
-[ext_resource type="PackedScene" uid="uid://n6ug8rimthdt" path="res://scenes/level/default_room_components.tscn" id="2_v2gnk"]
-
-[node name="Room" type="Node3D" unique_id=530671447]
-script = ExtResource("1_e4yy5")
-
-[node name="DefaultRoomComponents" parent="." unique_id=1838413567 instance=ExtResource("2_v2gnk")]
