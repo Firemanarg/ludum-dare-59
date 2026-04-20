@@ -33,6 +33,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	print("current index: ", _current_index)
 	pass
 
 
@@ -42,8 +43,8 @@ func _physics_process(_delta: float) -> void:
 # ------------------------------------------------------------------------------
 
 func _start_attacking() -> void:
-	_current_index = 0
-	if _current_index >= _attack_list.size():
+	_current_index = _attack_list.size() - 1
+	if _current_index >= _attack_list.size() or _current_index < 0:
 		FDLog.log_message(
 				"[CatStatue]: Attempted to access index %d from attack_list, "
 				+ "but size is %d." % [_current_index, _attack_list.size()],
