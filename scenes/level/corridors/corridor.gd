@@ -3,7 +3,7 @@ extends Node3D
 
 # ------------------------------------------------------------------------------
 
-@onready var _obstruction_layer: StaticBody3D = get_node("%ObstructionLayer")
+@onready var _obstruction_layer: Node3D = get_node("%ObstructionLayer")
 
 # ------------------------------------------------------------------------------
 
