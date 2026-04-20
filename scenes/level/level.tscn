@@ -77,8 +77,6 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1036397847]
 environment = SubResource("Environment_i166f")
 
-[node name="TestRoom" parent="." unique_id=530671447 instance=ExtResource("2_xv074")]
-
 [node name="Player" parent="." unique_id=1220500807 instance=ExtResource("1_h3e3j")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47581005, -9.536743e-07)
