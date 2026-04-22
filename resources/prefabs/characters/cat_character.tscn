@@ -83,10 +83,11 @@ xfade_time = 0.2
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q1cky"]
-xfade_time = 0.2
+xfade_time = 0.5
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_emd73"]
-xfade_time = 0.2
+xfade_time = 1.0
+reset = false
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c8gur"]
 xfade_time = 0.2
@@ -111,7 +112,7 @@ states/static/position = Vector2(330, 100)
 states/walk/node = SubResource("AnimationNodeAnimation_mb2eb")
 states/walk/position = Vector2(386, 208)
 transitions = ["static", "idle", SubResource("AnimationNodeStateMachineTransition_muhdr"), "idle", "static", SubResource("AnimationNodeStateMachineTransition_7uegm"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_kx01y"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_6xw23"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_5qlhk"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_786m3"), "idle", "dance", SubResource("AnimationNodeStateMachineTransition_q1cky"), "dance", "idle", SubResource("AnimationNodeStateMachineTransition_emd73"), "idle", "laser", SubResource("AnimationNodeStateMachineTransition_c8gur"), "laser", "idle", SubResource("AnimationNodeStateMachineTransition_h1u2o"), "Start", "static", SubResource("AnimationNodeStateMachineTransition_28uti")]
-graph_offset = Vector2(-106, -71)
+graph_offset = Vector2(26, -55)
 
 [node name="CatCharacter" unique_id=1785082727 instance=ExtResource("1_so7m0")]
 script = ExtResource("2_c8gur")
@@ -120,10 +121,7 @@ script = ExtResource("2_c8gur")
 transform = Transform3D(0.57, 0, 0, 0, 0.57, 0, 0, 0, 0.57, 0, 0, 0)
 
 [node name="body" parent="animal-cat/root" parent_id_path=PackedInt32Array(996242597) index="0" unique_id=1660385792]
-transform = Transform3D(0.99768054, -0.060871657, -0.03046415, 0.060900014, 0.99814385, 2.9508374e-06, 0.030407425, -0.0018582112, 0.99953586, 1.5731821e-08, 0.18124998, -3.8083503e-08)
-
-[node name="tail" parent="animal-cat/root/body" index="1" unique_id=508608034]
-transform = Transform3D(0.98841804, 0.15175568, 0, -0.15175568, 0.98841804, 0, 0, 0, 1, 0, 0.6375, -0.5483935)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 1.5731821e-08, 0.18124998, -3.8083503e-08)
 
 [node name="GlowingEyes" type="Node3D" parent="animal-cat/root/body" index="2" unique_id=461871936]
 unique_name_in_owner = true
