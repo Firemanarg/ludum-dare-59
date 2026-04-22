@@ -1,0 +1,635 @@
+[gd_scene format=4 uid="uid://c33cycfoks313"]
+
+[ext_resource type="Texture2D" uid="uid://dw5rvpqpi6fjo" path="res://assets/meshes/walls/textures/bricks/Bricks1_Color.png" id="2_f7k20"]
+[ext_resource type="Texture2D" uid="uid://cmidk6dmbiogp" path="res://assets/meshes/walls/textures/bricks/Bricks1_Normal.png" id="3_8khle"]
+[ext_resource type="Texture2D" uid="uid://b3u3dbufwa8ia" path="res://assets/meshes/player_character/textures/colormap.png" id="4_f7k20"]
+[ext_resource type="PackedScene" uid="uid://ecrqnhi3ksel" path="res://resources/prefabs/characters/cat_character.tscn" id="5_7glgu"]
+[ext_resource type="PackedScene" uid="uid://b6ld20gb7c2ug" path="res://resources/prefabs/props/column_prefab.tscn" id="6_0wojx"]
+[ext_resource type="Shader" uid="uid://brswmhmlyo0li" path="res://resources/shaders/blur.gdshader" id="6_7glgu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7glgu"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_0wojx"]
+sky_material = SubResource("ProceduralSkyMaterial_7glgu")
+
+[sub_resource type="Environment" id="Environment_m03u5"]
+background_mode = 2
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_0wojx")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_7glgu"]
+size = Vector3(14, 0.2, 14)
+
+[sub_resource type="Gradient" id="Gradient_7glgu"]
+colors = PackedColorArray(0, 0, 0, 1, 0.38170326, 0.38170323, 0.38170323, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0wojx"]
+frequency = 0.0115
+fractal_type = 3
+fractal_lacunarity = 2.82
+fractal_gain = 0.8
+fractal_weighted_strength = 0.4
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m03u5"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_0wojx")
+color_ramp = SubResource("Gradient_7glgu")
+in_3d_space = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7glgu"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_0wojx")
+color_ramp = SubResource("Gradient_7glgu")
+invert = true
+in_3d_space = true
+as_normal_map = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5kv5"]
+albedo_texture = SubResource("NoiseTexture2D_m03u5")
+normal_enabled = true
+normal_scale = 3.84
+normal_texture = SubResource("NoiseTexture2D_7glgu")
+
+[sub_resource type="Gradient" id="Gradient_0wojx"]
+colors = PackedColorArray(0, 0, 0, 1, 0.38170326, 0.38170323, 0.38170323, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m03u5"]
+frequency = 0.0032
+fractal_type = 3
+fractal_lacunarity = 2.82
+fractal_gain = 0.8
+fractal_weighted_strength = 0.4
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vy6tg"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_m03u5")
+color_ramp = SubResource("Gradient_0wojx")
+
+[sub_resource type="Gradient" id="Gradient_thj7m"]
+colors = PackedColorArray(0, 0, 0, 1, 0.38170326, 0.38170323, 0.38170323, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lp5xj"]
+frequency = 0.0032
+fractal_type = 3
+fractal_lacunarity = 2.82
+fractal_gain = 0.8
+fractal_weighted_strength = 0.4
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7swvj"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_lp5xj")
+color_ramp = SubResource("Gradient_thj7m")
+as_normal_map = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chp4b"]
+albedo_texture = SubResource("NoiseTexture2D_vy6tg")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_7swvj")
+
+[sub_resource type="BoxMesh" id="BoxMesh_kql3j"]
+size = Vector3(5, 3.375, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72jo4"]
+albedo_color = Color(1.3991334, 0.97460926, 0.6272712, 1)
+albedo_texture = ExtResource("2_f7k20")
+metallic_specular = 0.0
+normal_enabled = true
+normal_scale = 4.0
+normal_texture = ExtResource("3_8khle")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbqa5"]
+resource_name = "colormap"
+cull_mode = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hm5tq"]
+_surfaces = [{
+"aabb": AABB(-0.07314, 0, -0.0595, 0.14628, 0.6, 0.119),
+"format": 34896613377,
+"index_count": 174,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAgABAAMAAAAEAAMAAgAFAAAABAAAAAUAAwAGAAIABQAHAAQAAwAEAAcABwAFAAIABwAGAAMAAgAGAAcAFQAWABcACAAWABUAFgAIABgAGAAZABYAGQAXABYAGAAIABoAFQAaAAgAGgALABgAGQAYAAsAGwALABoACwAbABkAGgAVABsAGQAbABwAFQAcABsAGQAdABcAHAAdABkAFwAeABUAFQAeABwACgAeABcACQAdABwAHgAfABwAHAAfAAkAHgAKAB8AHQAJACAAHQAgABcAIAAJAB8AFwAgAAoAHwAKACAADAANAA4AIQAOAA0ADgASAAwAEwASAA4ADAASABMADgAhABMAIgANAAwADQAiACEADAAjACIAEwAjAAwAIQAiABAAEAAiACMAEAAPACEAIwARABAAIQAPABQAFAARACMAFAATACEAIwATABQA"),
+"lods": [0.10861152, PackedByteArray("AAABAAIAAwABAAAAAgABAAMAAAAEAAMAAgAFAAAABAAAAAUAAwAGAAIABQAHAAQAAwAEAAcABwAFAAIABwAGAAMAAgAGAAcACAAJAAoACwAKAAkACgALAAgACQAIAAsADAANAA4ADwAOAA0ADQAQAA8AEAANAAwADAARABAADgASAAwAEwARAAwADAASABMAEwASAA4ADgAPABMAEQATABQAFAATAA8A")],
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("t1IAAKm3AABHrQAAqbcAAEetAABVSAAAX7z/fzfKAACfQ/9/N8oAALdSAABVSAAAX7z/f8c1AACfQ/9/xzUAACDo/391vwAA3hf/f4lAAADeF6mqdb8AACDoqaqJQAAAz2H//+NaAAAvnv//41oAAC+e//8bpQAAX7ypqjfKAABfvKmqxzUAAJ9DqarHNQAAz2H//xulAAAAAFTVN8oAAJ9Dqao3ygAAn7Opqv//AACfs/9///8AAF9M/3///wAAIOj/f4lAAACfs/9/AAAAACDoqap1vwAAn7OpqgAAAABfTKmqAAAAAF9M/38AAAAAX0ypqv//AADeF6mqiUAAAN4X/391vwAA//9U1TfKAAD//1TVxzUAAAAAVNXHNQAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cdhem"]
+resource_name = "weapon-spear_weapon-spear"
+_surfaces = [{
+"aabb": AABB(-0.07314, 0, -0.0595, 0.14628, 0.6, 0.119),
+"attribute_data": PackedByteArray("/zdlxv83Zcb/N2XG/zdlxv83mPn/N5j5/zeY+f83mPn/N5j5/zeY+f83Zcb/N2XG/zeY+f83Zcb/N2XG/zeY+f83mPn/N2XG/zdlxv83mPn/N2XG/zeY+f83mPn/N2XG/7fL7P+3y+z/tzLT/7cy0/+3MtP/tzLT/7cy0/+3MtP/t8vs/7f/3/+3y+z/t8vs/7cy0/+3MtP/tzLT/7cy0/+3MtP/t8vs/7fL7P+3MtP/tzLT/7fL7P+3y+z/tzLT/7cy0/+3y+z/t8vs/7cy0/+3y+z/t8vs/7cy0/+3MtP/t8vs/7cy0/+3MtP/t8vs/7fL7P+3MtP/tzLT/7cy0/+3MtP/tzLT/7cy0/+3MtP/tzLT/7fL7P+3y+z/t8vs/7fL7P+3y+z/t8vs/7fL7P+3y+z/tzLT/7fL7P+3y+z/tzLT/7cy0/+3MtP/t8vs/7fL7P+3y+z/tzLT/7cy0/+3y+z/t8vs/7cy0/+3MtP/t//f/7f/3/+3/9//t//f/7fL7P+3/9//t//f/7f/3/+3/9//t//f/7f/3/+3/9//t//f/7f/3/+3/9//t//f"),
+"format": 34896613399,
+"index_count": 174,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAMAAxADIAMgAzADAANAA1ABoAGgA2ADQANwAbADgAOAAYADcAOQA6ADsAOwA8ADkAPQA+AD8APwBAAD0AQABBAD0AQABCAEEAQgBDAEEAQgBEAEMARQBGAEcARwBIAEUASABJAEUASABKAEkASgBLAEkASgBMAEsATQBOAE8ATwBQAE0AUQBSAFMAUwBUAFEAVQAZAFYAVgBXAFUAWABZAFoAWgBbAFgAHAAdAB4AHgAfABwAIgAgAFwAXAAhACIAXQBeACkAKQAqAF0AXwAjAGAAYABhAF8AYgAtAC4ALgBjAGIAJgBkAGUAZQAnACYAKABmAGcAZwArACgALABoAGkAaQAvACwAagBrACQAJAAlAGoA"),
+"lods": [0.10861152, PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGwAaABkAGgAbABgAGQAYABsAHAAdAB4AHgAfABwAIAAhACIAIgAhACMAIQAgACQAJAAlACEAJgAjACEAIQAnACYAKAApACoAKgArACgALAAtAC4ALgAvACwA")],
+"material": SubResource("StandardMaterial3D_bbqa5"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 108,
+"vertex_data": PackedByteArray("t1IAAKm3/79HrQAAqbf/v0etAABVSP+/t1IAAFVI/7+fQ/9/xzX//1+8/3/HNf//X7z/fzfK//+fQ/9/N8r//1+8/383ygHAX7z/f8c1AcBHrQAAVUgBwEetAACptwHAn0P/f8c1//+3UgAAVUj//0etAABVSP//X7z/f8c1//9fvP9/N8orgUetAACptyuBt1IAAKm3K4GfQ/9/N8orgbdSAABVSAHAn0P/f8c1AcCfQ/9/N8oBwLdSAACptwHAIOj/f3W//6/eF/9/iUD/z94Xqap1v/+vIOipqolA/8/PYf//41r//y+e///jWv//L57//xul///PYf//G6X//59DqarHNV3BAABU1TfKG6SfQ6mqN8pmn1+8qao3ygCAz2H//+NalsLPYf//G6WWwi+e//8bpfWGz2H//xul9YYvnv//41qWwl+8qarHNV3BX7ypqjfKXcEvnv//G6WWws9h///jWv//n0Opqsc1//9fvKmqxzX//y+e///jWv//n7Opqv///4+fs/9/////j19M/3////+PX0ypqv///49fTP9/////j94X/391v/+vX0ypqv///48g6Kmqdb//ryDo/3+JQP/Pn7Opqv///48g6Kmqdb//ryDo/391v/+vn7P/f////4+fs6mqAAD//yDoqaqJQP//IOipqnW///+fs6mq/////19MqaoAAP//X0ypqv/////eF6mqiUD//94Xqap1v///n7P/f////78g6P9/db//vyDo/3+JQP+/n7P/fwAA/79fTP9/////v19M/38AAP+/3hf/f3W//7/eF/9/iUD/v19MqaoAAP/vX0z/fwAA/++fs/9/AAD/75+zqaoAAP/vIOipqolA/8+fs6mqAAD/75+z/38AAP/vIOj/f4lA/8/eF/9/db//r94XqaqJQP/P3hepqnW//6/eF/9/iUD/z19M/38AAP/vX0ypqgAA/+/eF6mqiUD/zwAAVNXHNQXA//9U1TfKBcD//1TVxzUFwP//VNU3ykWDn0OpqjfK+psAAFTVN8rqowAAVNXHNf////9U1cc1/////1TVN8pFgwAAVNU3yuqj//9U1cc1BcD//1TVN8oFwAAAVNXHNf////9U1cc1//8AAFTVN8obpAAAVNXHNQXAAAD/fwAA/38AAP9/AAD/f/9//7//f/+//3//v/9//781fpMDNX6TAzV+kwM1fpMDz4H//8+B///Pgf//z4H//wAA/38AAP9/AAD/fwAA/39rfDX+a3w1/mt8Nf5rfDX+/38AAP9/////f////38AAP9//7//f/+//3//v/9//786XZzuLYau7LhKD/L/f///65Un1OuVJ9T///9/////f9er6xWcbsUinG7FIter6xX/f+b1/3////9/////f+b1/38AAP9/AAD/f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3//f////3////9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/////f////3////9/////f////3////9////fgj/6voXfAr6F3wL///9/YVzS0JuWkvD/fw37/38N+////3+blpLwvoXfAr6F3wL/fw37/38N+y2Gruzfgj/6")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_hm5tq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iince"]
+albedo_texture = ExtResource("4_f7k20")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esjob"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0.5019608, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_skwn2"]
+material = SubResource("StandardMaterial3D_esjob")
+radius = 0.08
+height = 0.18
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8khle"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_7glgu"]
+material = SubResource("StandardMaterial3D_8khle")
+radius = 1.0
+height = 2.0
+radial_segments = 8
+rings = 8
+
+[sub_resource type="Curve" id="Curve_iince"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.0034722239, 0.4822191), 0.0, -6.9466257, 0, 0, Vector2(0.9861111, -0.49786615), 0.2315548, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_670wq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.6320837, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_esjob"]
+offsets = PackedFloat32Array(0, 0.2519084, 0.5152672, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0, 1, 1, 0.47058824, 0.3019608, 1, 0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_esjob"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0wojx"]
+shader = ExtResource("6_7glgu")
+shader_parameter/blur_amount = 2.0000001899999997
+shader_parameter/mix_amount = 0.1150000054625
+shader_parameter/color_over = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0wojx"]
+
+[sub_resource type="Gradient" id="Gradient_m03u5"]
+offsets = PackedFloat32Array(0, 0.20883535)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.5647059)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_thj7m"]
+gradient = SubResource("Gradient_m03u5")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7glgu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7glgu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.33, 0.22000001, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wojx"]
+content_margin_left = 30.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.33, 0.22000001, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 100
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m03u5"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.33, 0.22000001, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thj7m"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.33, 0.22000001, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 5
+
+[node name="MainScreen3DBackground" type="Node3D" unique_id=857180897]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1994555126]
+environment = SubResource("Environment_m03u5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1884976808]
+transform = Transform3D(-0.8660254, -0.4164607, 0.27669582, 0, 0.5533916, 0.83292127, -0.50000006, 0.72133094, -0.47925115, 0, 0, 0)
+light_indirect_energy = 3.133
+shadow_enabled = true
+
+[node name="Scenery" type="Node3D" parent="." unique_id=1839459437]
+
+[node name="Floor" type="MeshInstance3D" parent="Scenery" unique_id=515109167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.93228436, -0.1, -2)
+layers = 16
+mesh = SubResource("BoxMesh_7glgu")
+surface_material_override/0 = SubResource("StandardMaterial3D_h5kv5")
+
+[node name="Roof" type="MeshInstance3D" parent="Scenery" unique_id=558870424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7613344, -2)
+layers = 16
+mesh = SubResource("BoxMesh_7glgu")
+surface_material_override/0 = SubResource("StandardMaterial3D_chp4b")
+
+[node name="Walls" type="Node3D" parent="Scenery" unique_id=1198970515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+
+[node name="Wall" type="MeshInstance3D" parent="Scenery/Walls" unique_id=1172315820]
+transform = Transform3D(0.49429086, 0, 0.8692966, 0, 1, 0, -0.8692966, 0, 0.49429086, -4.221411, 0, 0.3707211)
+layers = 16
+mesh = SubResource("BoxMesh_kql3j")
+surface_material_override/0 = SubResource("StandardMaterial3D_72jo4")
+
+[node name="Wall2" type="MeshInstance3D" parent="Scenery/Walls" unique_id=629366894]
+transform = Transform3D(0.86929655, 0, -0.4942909, 0, 1, 0, 0.4942909, 0, 0.86929655, 0.72149754, 0, -4.3222456)
+layers = 16
+mesh = SubResource("BoxMesh_kql3j")
+surface_material_override/0 = SubResource("StandardMaterial3D_72jo4")
+
+[node name="Wall3" type="MeshInstance3D" parent="Scenery/Walls" unique_id=777099453]
+transform = Transform3D(0.86271673, 0, 0.50568753, 0, 1, 0, -0.50568753, 0, 0.86271673, -3.7802236, 0, -10.024799)
+layers = 16
+mesh = SubResource("BoxMesh_kql3j")
+surface_material_override/0 = SubResource("StandardMaterial3D_72jo4")
+
+[node name="Torch" type="Node3D" parent="Scenery" unique_id=15423196]
+transform = Transform3D(0.80571854, 0.4980105, -0.3206295, -0.5257686, 0.85062766, 0, 0.27273634, 0.16857693, 0.9472047, -3.5028977, 1.005874, 3.638387)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery/Torch" unique_id=481828040]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+layers = 16
+mesh = SubResource("ArrayMesh_cdhem")
+surface_material_override/0 = SubResource("StandardMaterial3D_iince")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery/Torch/MeshInstance3D" unique_id=571529341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47443497, 0)
+layers = 16
+mesh = SubResource("SphereMesh_skwn2")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Scenery/Torch" unique_id=1691961052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3969839e-09, 0.77678, -9.313226e-10)
+layers = 16
+amount = 11
+lifetime = 0.4
+fract_delta = false
+mesh = SubResource("SphereMesh_7glgu")
+spread = 0.0
+flatness = 1.0
+gravity = Vector3(0, 9.8, 0)
+linear_accel_max = 5.0
+linear_accel_curve = SubResource("Curve_iince")
+tangential_accel_min = -10.32
+tangential_accel_max = 12.9
+scale_amount_min = 0.05
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_670wq")
+color_ramp = SubResource("Gradient_esjob")
+hue_variation_curve = SubResource("Curve_esjob")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Scenery/Torch" unique_id=1992450963]
+transform = Transform3D(0.9999999, -3.6880374e-07, 2.9802322e-07, 3.7252903e-07, 0.9999999, 1.4901161e-07, -3.2782555e-07, -1.6391277e-07, 0.99999994, 0.783393, 1.1064318, 0.43545812)
+layers = 24
+light_color = Color(1, 0.7372549, 0, 1)
+omni_range = 2.264
+omni_attenuation = -0.524
+
+[node name="Torch2" type="Node3D" parent="Scenery" unique_id=1777155816]
+transform = Transform3D(-0.36193788, -0.22371188, -0.9049609, -0.5257686, 0.85062766, -1.9111008e-08, 0.7697847, 0.47579992, -0.4254949, 0.051115572, 1.0058742, -1.0499628)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery/Torch2" unique_id=582142731]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+layers = 16
+mesh = SubResource("ArrayMesh_cdhem")
+surface_material_override/0 = SubResource("StandardMaterial3D_iince")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery/Torch2/MeshInstance3D" unique_id=1569355529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47443497, 0)
+layers = 16
+mesh = SubResource("SphereMesh_skwn2")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Scenery/Torch2" unique_id=1887321906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3969839e-09, 0.77678, -9.313226e-10)
+layers = 16
+amount = 11
+lifetime = 0.4
+fract_delta = false
+mesh = SubResource("SphereMesh_7glgu")
+spread = 0.0
+flatness = 1.0
+gravity = Vector3(0, 9.8, 0)
+linear_accel_max = 5.0
+linear_accel_curve = SubResource("Curve_iince")
+tangential_accel_min = -10.32
+tangential_accel_max = 12.9
+scale_amount_min = 0.05
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_670wq")
+color_ramp = SubResource("Gradient_esjob")
+hue_variation_curve = SubResource("Curve_esjob")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Scenery/Torch2" unique_id=1613945900]
+transform = Transform3D(0.99999994, -3.5762787e-07, 1.7881393e-07, 3.5762787e-07, 0.99999994, 8.940697e-08, -3.2782555e-07, -1.3411045e-07, 0.99999994, 0.7212292, 0.87453663, 0.4354587)
+layers = 24
+light_color = Color(1, 0.7372549, 0, 1)
+light_energy = 0.4
+omni_range = 2.039
+omni_attenuation = -1.0
+
+[node name="Torch3" type="Node3D" parent="Scenery" unique_id=988726109]
+transform = Transform3D(0.46681538, 0.2885362, -0.83596057, -0.5257685, 0.8506276, -4.9287024e-08, 0.7110912, 0.43952173, 0.5487895, -4.022801, 1.0058742, -6.31784)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery/Torch3" unique_id=103251424]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+layers = 16
+mesh = SubResource("ArrayMesh_cdhem")
+surface_material_override/0 = SubResource("StandardMaterial3D_iince")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery/Torch3/MeshInstance3D" unique_id=915751081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47443497, 0)
+layers = 16
+mesh = SubResource("SphereMesh_skwn2")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Scenery/Torch3" unique_id=443729150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3969839e-09, 0.77678, -9.313226e-10)
+layers = 16
+amount = 11
+lifetime = 0.4
+fract_delta = false
+mesh = SubResource("SphereMesh_7glgu")
+spread = 0.0
+flatness = 1.0
+gravity = Vector3(0, 9.8, 0)
+linear_accel_max = 5.0
+linear_accel_curve = SubResource("Curve_iince")
+tangential_accel_min = -10.32
+tangential_accel_max = 12.9
+scale_amount_min = 0.05
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_670wq")
+color_ramp = SubResource("Gradient_esjob")
+hue_variation_curve = SubResource("Curve_esjob")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Scenery/Torch3" unique_id=1857813914]
+transform = Transform3D(1.0000001, -5.9604645e-07, 1.4901161e-07, 7.1525574e-07, 1.0000001, 2.0861626e-07, -3.2782555e-07, -2.0861626e-07, 1, 0.9773903, 1.1341922, 0.0784564)
+layers = 24
+light_color = Color(1, 0.7372549, 0, 1)
+omni_range = 4.828
+omni_attenuation = 2.231
+
+[node name="Cat" parent="Scenery" unique_id=1373688029 instance=ExtResource("6_0wojx")]
+transform = Transform3D(0.68655473, 0, 0.7270782, 0, 1, 0, -0.7270782, 0, 0.68655473, -1.8146248, -0.015142202, 4.4560275)
+
+[node name="MeshInstance3D" parent="Scenery/Cat" index="0" unique_id=1177582024]
+layers = 8
+
+[node name="CatCharacter" parent="Scenery/Cat" unique_id=1785082727 instance=ExtResource("5_7glgu")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.9842523, 0)
+
+[node name="body" parent="Scenery/Cat/CatCharacter/animal-cat/root" parent_id_path=PackedInt32Array(1785082727, 996242597) index="0" unique_id=1660385792]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 1.5731821e-08, 0.18124998, -3.8083503e-08)
+layers = 8
+
+[node name="Group" parent="Scenery/Cat/CatCharacter/animal-cat/root/body" index="0" unique_id=421209407]
+layers = 8
+
+[node name="tail" parent="Scenery/Cat/CatCharacter/animal-cat/root/body" index="1" unique_id=508608034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6375, -0.5483935)
+layers = 8
+
+[node name="LeftGlowingEye" parent="Scenery/Cat/CatCharacter/animal-cat/root/body/GlowingEyes" parent_id_path=PackedInt32Array(1785082727, 461871936) index="0" unique_id=588214422]
+layers = 8
+
+[node name="RightGlowingEye" parent="Scenery/Cat/CatCharacter/animal-cat/root/body/GlowingEyes" parent_id_path=PackedInt32Array(1785082727, 461871936) index="1" unique_id=111996491]
+layers = 8
+
+[node name="leg-back-left" parent="Scenery/Cat/CatCharacter/animal-cat/root" parent_id_path=PackedInt32Array(1785082727, 996242597) index="1" unique_id=494260841]
+layers = 8
+
+[node name="leg-back-right" parent="Scenery/Cat/CatCharacter/animal-cat/root" parent_id_path=PackedInt32Array(1785082727, 996242597) index="2" unique_id=460175694]
+layers = 8
+
+[node name="leg-front-left" parent="Scenery/Cat/CatCharacter/animal-cat/root" parent_id_path=PackedInt32Array(1785082727, 996242597) index="3" unique_id=515668729]
+layers = 8
+
+[node name="leg-front-right" parent="Scenery/Cat/CatCharacter/animal-cat/root" parent_id_path=PackedInt32Array(1785082727, 996242597) index="4" unique_id=1904538194]
+layers = 8
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1059095368]
+transform = Transform3D(1, -3.7625443e-07, 3.2782552e-07, 3.7625438e-07, 1, 1.3411059e-07, -3.2782557e-07, -1.3411046e-07, 1, 1.2638849, 1.435678, 6.2613664)
+layers = 8
+light_color = Color(1, 0.7372549, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=569715183]
+
+[node name="ControlBackground" type="Control" parent="CanvasLayer" unique_id=1414503717]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainerBackground" type="SubViewportContainer" parent="CanvasLayer/ControlBackground" unique_id=206745264]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportBackground" type="SubViewport" parent="CanvasLayer/ControlBackground/SubViewportContainerBackground" unique_id=29960660]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera3DBackground" type="Camera3D" parent="CanvasLayer/ControlBackground/SubViewportContainerBackground/SubViewportBackground" unique_id=415830525]
+transform = Transform3D(0.9659258, -0.024262592, 0.25767934, 0.019113127, 0.9995648, 0.022470439, -0.2581124, -0.016779719, 0.96596915, -0.009356823, 1.4026116, 7.888318)
+cull_mask = 16
+fov = 37.849285
+
+[node name="BlurEffect1" type="ColorRect" parent="CanvasLayer/ControlBackground" unique_id=267623180]
+material = SubResource("ShaderMaterial_0wojx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ControlBackground" unique_id=198094686]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/ControlBackground/HBoxContainer" unique_id=1233316300]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0wojx")
+
+[node name="GradientDark" type="TextureRect" parent="CanvasLayer/ControlBackground/HBoxContainer" unique_id=1018736402]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("GradientTexture2D_thj7m")
+
+[node name="SubViewportContainerCat" type="SubViewportContainer" parent="CanvasLayer/ControlBackground" unique_id=240726983]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportCat" type="SubViewport" parent="CanvasLayer/ControlBackground/SubViewportContainerCat" unique_id=2024836121]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera3DCat" type="Camera3D" parent="CanvasLayer/ControlBackground/SubViewportContainerCat/SubViewportCat" unique_id=543793835]
+transform = Transform3D(0.9659258, -0.024262592, 0.25767934, 0.019113127, 0.9995648, 0.022470439, -0.2581124, -0.016779719, 0.96596915, -0.009356823, 1.4026116, 7.888318)
+cull_mask = 8
+fov = 37.849285
+
+[node name="ControlButtons" type="Control" parent="CanvasLayer" unique_id=1069954269]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ControlButtons" unique_id=170172101]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ControlButtons/MarginContainer" unique_id=137963706]
+layout_mode = 2
+alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer" unique_id=2069100910]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_7glgu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer" unique_id=2073238067]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="LabelTitle" type="Label" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2018241134]
+layout_mode = 2
+theme_override_font_sizes/font_size = 84
+text = "Dungeons & Gatos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1868721987]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=55966363]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=297363267]
+layout_mode = 2
+
+[node name="ButtonPlayRandom" type="Button" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1950581028]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_7glgu")
+text = "Play"
+
+[node name="ButtonPlaySeed" type="Button" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1235174815]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_0wojx")
+text = "S"
+alignment = 0
+
+[node name="ButtonSettings" type="Button" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=594088541]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_m03u5")
+text = "Settings"
+
+[node name="ButtonRanking" type="Button" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1486792400]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_m03u5")
+text = "Ranking"
+
+[node name="ButtonCredits" type="Button" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=216508791]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_m03u5")
+text = "Credits"
+
+[node name="ButtonQuit" type="Button" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1785610940]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_thj7m")
+text = "Quit"
+
+[editable path="Scenery/Cat"]
+[editable path="Scenery/Cat/CatCharacter"]
