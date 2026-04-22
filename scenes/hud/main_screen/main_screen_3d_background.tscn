@@ -1,11 +1,13 @@
 [gd_scene format=4 uid="uid://c33cycfoks313"]
 
+[ext_resource type="Script" uid="uid://cfn773wmw6k8n" path="res://scenes/hud/main_screen/main_screen.gd" id="1_m03u5"]
 [ext_resource type="Texture2D" uid="uid://dw5rvpqpi6fjo" path="res://assets/meshes/walls/textures/bricks/Bricks1_Color.png" id="2_f7k20"]
 [ext_resource type="Texture2D" uid="uid://cmidk6dmbiogp" path="res://assets/meshes/walls/textures/bricks/Bricks1_Normal.png" id="3_8khle"]
 [ext_resource type="Texture2D" uid="uid://b3u3dbufwa8ia" path="res://assets/meshes/player_character/textures/colormap.png" id="4_f7k20"]
 [ext_resource type="PackedScene" uid="uid://ecrqnhi3ksel" path="res://resources/prefabs/characters/cat_character.tscn" id="5_7glgu"]
 [ext_resource type="PackedScene" uid="uid://b6ld20gb7c2ug" path="res://resources/prefabs/props/column_prefab.tscn" id="6_0wojx"]
 [ext_resource type="Shader" uid="uid://brswmhmlyo0li" path="res://resources/shaders/blur.gdshader" id="6_7glgu"]
+[ext_resource type="Texture2D" uid="uid://6b5da2utxqto" path="res://assets/hud/logo_no_shadows_300p.png" id="7_0wojx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7glgu"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -188,6 +190,26 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="QuadMesh" id="QuadMesh_m03u5"]
+
+[sub_resource type="Gradient" id="Gradient_lp5xj"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.17843866, 0.42379183, 0.7)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.8957714, 1, 1, 1, 0.27281213, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m03u5"]
+gradient = SubResource("Gradient_lp5xj")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kql3j"]
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_m03u5")
+billboard_mode = 1
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0wojx"]
 shader = ExtResource("6_7glgu")
 shader_parameter/blur_amount = 2.0000001899999997
@@ -253,7 +275,8 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 corner_detail = 5
 
-[node name="MainScreen3DBackground" type="Node3D" unique_id=857180897]
+[node name="MainScreen" type="Node3D" unique_id=857180897]
+script = ExtResource("1_m03u5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1994555126]
 environment = SubResource("Environment_m03u5")
@@ -429,24 +452,38 @@ transform = Transform3D(0.68655473, 0, 0.7270782, 0, 1, 0, -0.7270782, 0, 0.6865
 layers = 8
 
 [node name="CatCharacter" parent="Scenery/Cat" unique_id=1785082727 instance=ExtResource("5_7glgu")]
+unique_name_in_owner = true
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.9842523, 0)
 
 [node name="body" parent="Scenery/Cat/CatCharacter/animal-cat/root" parent_id_path=PackedInt32Array(1785082727, 996242597) index="0" unique_id=1660385792]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 1.5731821e-08, 0.18124998, -3.8083503e-08)
 layers = 8
 
 [node name="Group" parent="Scenery/Cat/CatCharacter/animal-cat/root/body" index="0" unique_id=421209407]
 layers = 8
 
 [node name="tail" parent="Scenery/Cat/CatCharacter/animal-cat/root/body" index="1" unique_id=508608034]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6375, -0.5483935)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.6375, -0.5483935)
 layers = 8
 
 [node name="LeftGlowingEye" parent="Scenery/Cat/CatCharacter/animal-cat/root/body/GlowingEyes" parent_id_path=PackedInt32Array(1785082727, 461871936) index="0" unique_id=588214422]
 layers = 8
 
+[node name="LeftEyeGlowEffect" type="MeshInstance3D" parent="Scenery/Cat/CatCharacter/animal-cat/root/body/GlowingEyes/LeftGlowingEye" index="0" unique_id=1279849344]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.19721779, 0.4591331, 1.5395289e-15)
+layers = 8
+mesh = SubResource("QuadMesh_m03u5")
+surface_material_override/0 = SubResource("StandardMaterial3D_kql3j")
+
 [node name="RightGlowingEye" parent="Scenery/Cat/CatCharacter/animal-cat/root/body/GlowingEyes" parent_id_path=PackedInt32Array(1785082727, 461871936) index="1" unique_id=111996491]
 layers = 8
+
+[node name="RightEyeGlowEffect" type="MeshInstance3D" parent="Scenery/Cat/CatCharacter/animal-cat/root/body/GlowingEyes/RightGlowingEye" index="0" unique_id=1964707660]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.19721779, 0.4591331, 1.5395289e-15)
+layers = 8
+mesh = SubResource("QuadMesh_m03u5")
+surface_material_override/0 = SubResource("StandardMaterial3D_kql3j")
 
 [node name="leg-back-left" parent="Scenery/Cat/CatCharacter/animal-cat/root" parent_id_path=PackedInt32Array(1785082727, 996242597) index="1" unique_id=494260841]
 layers = 8
@@ -464,6 +501,22 @@ layers = 8
 transform = Transform3D(1, -3.7625443e-07, 3.2782552e-07, 3.7625438e-07, 1, 1.3411059e-07, -3.2782557e-07, -1.3411046e-07, 1, 1.2638849, 1.435678, 6.2613664)
 layers = 8
 light_color = Color(1, 0.7372549, 0, 1)
+
+[node name="LaserLight1" type="OmniLight3D" parent="." unique_id=966360454]
+unique_name_in_owner = true
+transform = Transform3D(1, -3.7625443e-07, 3.2782552e-07, 3.7625438e-07, 1, 1.3411059e-07, -3.2782557e-07, -1.3411046e-07, 1, 0.16978285, 2.1204357, 6.823358)
+visible = false
+layers = 24
+light_energy = 3.0
+omni_range = 6.0
+
+[node name="LaserLight2" type="OmniLight3D" parent="." unique_id=1997996498]
+unique_name_in_owner = true
+transform = Transform3D(1, -3.7625443e-07, 3.2782552e-07, 3.7625438e-07, 1, 1.3411059e-07, -3.2782557e-07, -1.3411046e-07, 1, 0.109029174, 1.254051, 3.9617567)
+visible = false
+layers = 16
+light_energy = 3.0
+omni_range = 6.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=569715183]
 
@@ -557,7 +610,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
+theme_override_constants/margin_right = 160
 theme_override_constants/margin_bottom = 100
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ControlButtons/MarginContainer" unique_id=137963706]
@@ -576,11 +629,19 @@ theme_override_constants/separation = 70
 alignment = 1
 
 [node name="LabelTitle" type="Label" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2018241134]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 84
 text = "Dungeons & Gatos"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TitleTexture" type="TextureRect" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer/VBoxContainer" unique_id=846573262]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+texture = ExtResource("7_0wojx")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ControlButtons/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1868721987]
 layout_mode = 2
